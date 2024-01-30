@@ -21,6 +21,7 @@ if ($conn->connect_error) {
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="vehicle.css">
 </head>
 <body>
     <div class="container">
@@ -37,18 +38,18 @@ if ($conn->connect_error) {
               
 <!-- ... Previous HTML code ... -->
 
-<div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+<div class="conatiner_vehicle">
     <?php 
     $query = "SELECT * FROM vehicles";
     $result = $conn->query($query);
     if ($result->num_rows > 0) {
 
         while ($row = $result->fetch_assoc()){
-            echo "<a href='#' class='group relative'>";
-            echo "<div class='aspect-w-1 aspect-h-1 overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8' style='min-height: 200px;'>";
-            echo "<img src='sahaback/".$row['img']."' alt='Sahayatri Images' class='object-cover object-center group-hover:opacity-75'>";
-            echo "</div><h3 class='mt-4 text-sm text-gray-700'>".$row['vehiclename']."</h3>";
-            echo "<p class='mt-1 text-lg font-medium text-gray-900'>".$row['price']."</p>";
+            echo "<a id='main' href='#'>";
+            echo "<div class='vehicle_img'>";
+            echo "<img id='vehicle_img' src='sahaback/".$row['img']."' alt='Sahayatri Images' >";
+            echo "</div><h3>".$row['vehiclename']."</h3>";
+            echo "<p>".$row['price']."</p>";
             echo "</a>";
         }
     }
