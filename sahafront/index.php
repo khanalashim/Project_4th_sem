@@ -118,7 +118,13 @@ if ($conn->connect_error) {
             </div>
         </div>
     </div>
+    <script>
+        var profile = document.querySelector('.profile_image');
 
+        profile.addEventListener('click', function () {
+            window.location.href = 'logout.php';
+        });
+    </script>
 
 </body>
 

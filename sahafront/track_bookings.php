@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +64,15 @@ include 'db.php';
 
 
 
-                    <p>Welcome, Ashim</p>
+                    <p>Welcome,
+                        <?php if (isset($_SESSION["User_firstname"])) {
+                            // User is logged in, so echo the first name
+                            echo $_SESSION["User_firstname"];
+                        } else {
+                            // User is not logged in
+                            echo "User";
+                        } ?>
+                    </p>
                     <div class="profile_image">
                         <img height="40px" width="40px" src="profile.jpg" alt="">
 
@@ -85,7 +94,13 @@ include 'db.php';
                         </thead>
                         <tbody>
                             <?php
-                            $query = "SELECT * FROM bookings";
+                            $user_id = 0;
+                            if (isset($_SESSION["User_id"])) {
+                                $user_id = $_SESSION["User_id"];
+                            } else {
+                                echo "Login/Register First";
+                            }
+                            $query = "SELECT * FROM bookings WHERE user_id='$user_id'";
                             $result = $conn->query($query);
 
                             if ($result->num_rows > 0) {

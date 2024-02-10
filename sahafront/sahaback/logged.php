@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $conn->query($query);
 
     while ($row = $result->fetch_assoc()) {
+        $user_id = $row['id'];
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
     }
@@ -29,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $_SESSION["User_firstname"] = $firstname;
         $_SESSION["User_lastname"] = $lastname;
         $_SESSION["User_email"] = $email;
+        $_SESSION["User_id"] = $user_id;
         $_SESSION["loggedin"] = true;
 
         echo $_SESSION["User_firstname"], $_SESSION["User_lastname"], $_SESSION["User_email"];

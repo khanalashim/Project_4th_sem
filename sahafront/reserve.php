@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +63,15 @@ include 'db.php';
                             </div>
                         </a>
                     </div>
-                    <p>Welcome, Ashim</p>
+                    <p>Welcome,
+                        <?php if (isset($_SESSION["User_firstname"])) {
+                            // User is logged in, so echo the first name
+                            echo $_SESSION["User_firstname"];
+                        } else {
+                            // User is not logged in
+                            echo "User";
+                        } ?>
+                    </p>
                     <img height="40px" width="40px" src="profile.jpg" alt="">
                 </div>
 
