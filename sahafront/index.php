@@ -80,7 +80,13 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php echo $_SESSION["User_firstname"]; ?>
+                        <?php if (isset($_SESSION["User_firstname"])) {
+                            // User is logged in, so echo the first name
+                            echo $_SESSION["User_firstname"];
+                        } else {
+                            // User is not logged in
+                            echo "User";
+                        } ?>
                     </p>
                     <div class="profile_image">
                         <img height="40px" width="40px" src="profile.jpg" alt="">
