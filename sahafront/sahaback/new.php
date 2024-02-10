@@ -1,60 +1,85 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
+            font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
         }
-        .form{
-            
+
+        .form {
+            padding: 13px 24px;
+            margin-top: 45px;
             margin-left: auto;
             margin-right: auto;
             height: 56%;
-            width: 34%;
+            width: 24%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+            word-spacing: 2px;
+            letter-spacing: 2px;
         }
-        label,input,button{
+
+        label,
+        input,
+        button {
             display: block;
-            margin-left: auto;
-            margin-right: auto;
+
         }
-        label,h1{
+
+
+        h1 {
             text-align: center;
+            margin-bottom: 12px;
         }
-        button{
-            padding: 6px 8px;
-            border-radius: 12px;
+
+        button {
+            padding: 12px 18px;
+            border-radius: 6px;
             background-color: black;
             color: white;
+            width: 100%;
         }
-        input{
-            border: none;
-            border-radius: 12px;
-            width: 239;
-            height: 45px;
+
+        input {
+            border: 2px solid gray;
+            border-radius: 8px;
+            width: 98%;
+            height: 18px;
+            padding: 12px 4px;
+            margin-top: 7px;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Registration </h1>
-    
+
+
     <form class="form" action="db.php" method="post" enctype="multipart/form-data">
+        <h1>Registration </h1>
         <label for="">First Name</label>
-        <input type="text" name="firstname">
+        <input type="text" name="firstname" placeholder="Enter Your firstname"><br>
         <label for="">Last Name</label>
-        <input type="text" name="lastname">
+        <input type="text" name="lastname" placeholder="Enter Your lastname"><br>
         <label for="">Email</label>
-        <input type="email" name="email">
-        <button type="submit">Submit</button>
+        <input type="email" name="email" placeholder="Enter Your email"><br>
+        <label for="">Password</label>
+        <input type="password" name="password" placeholder="Enter Your password"><br>
         <label for="image">Select Image:</label>
         <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Submit</button><br>
         <br>
     </form>
 
 
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -17,7 +17,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $firstname = $_POST["firstname"];
     $lastname = $_POST["lastname"];
     $email = $_POST["email"];
+    $password = $_POST["password"];
     $file = $_FILES["file"];
+
+
 
     //print_r($file);
 
@@ -31,20 +34,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $fileext = explode('.', $filename);
     $ext = strtolower(end($fileext));
 
-    $allowed = array('jpg','jpeg','png');
+    $allowed = array('jpg', 'jpeg', 'png');
     if (in_array($ext, $allowed)) {
-        if($fileerror === 0) {
-            if($filesize < 10000000) {
-                $filenewname = uniqid('',true).'.'.$ext;
-                $filedestination = 'image/'.$filenewname;
-                move_uploaded_file($filetemp,$filedestination);
+        if ($fileerror === 0) {
+            if ($filesize < 10000000) {
+                $filenewname = uniqid('', true) . '.' . $ext;
+                $filedestination = 'image/' . $filenewname;
+                move_uploaded_file($filetemp, $filedestination);
                 // Insert data into the database
-                $query1 = "INSERT INTO users (firstname, lastname, email,uid, destination) VALUES ('$firstname', '$lastname', '$email','$filenewname', '$filedestination')";
+                $query1 = "INSERT INTO users (firstname, lastname, email,password,uid, destination) VALUES ('$firstname', '$lastname', '$email','$password','$filenewname', '$filedestination')";
 
                 $result1 = $conn->query($query1);
-                
+
                 if ($result1 === TRUE) {
                     echo "Record inserted successfully";
+
                 } else {
                     echo "Error: " . $query1 . "<br>" . $conn->error;
                 }
@@ -62,12 +66,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-    
+
 
 }
 
-include"index.php";
+include "login.php";
 $conn->close();
 ?>
-
-
