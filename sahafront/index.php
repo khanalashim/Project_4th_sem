@@ -39,10 +39,10 @@ if ($conn->connect_error) {
                     <li id="active"><i class='bx bx-home'></i>Home</li>
                 </a>
                 <a href="track_bookings.php">
-                    <li><i class='bx bx-list-plus'></i>Track Bookings</li>
+                    <li><i class='bx bx-task'></i>Track Bookings</li>
                 </a>
-                <a href="trending.php">
-                    <li><i class='bx bx-trending-up'></i>Trending</li>
+                <a href="add_vehicle.php">
+                    <li><i class='bx bx-list-plus'></i>Add Vehicle</li>
                 </a>
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Services</li>
@@ -109,7 +109,7 @@ if ($conn->connect_error) {
                             echo "<p>" . $row['vehiclename'] . "- " . $row['model'] . "</p>";
                             echo "<p id='para_bold'><i class='bx bxs-star'></i>Rating 5</p>";
                             echo "<p id='para_bold'>" . $row['price'] . "</p>";
-                            echo "<a href='reserve.php?vehicle=$veh_id'><button id='reserve_btn'> Reserve Now</button></a>";
+                            echo "<a href='reserve.php?vehicle=$veh_id'><button id='reserve_btn'> More Details</button></a>";
                             echo "</div>";
                         }
                     } ?>

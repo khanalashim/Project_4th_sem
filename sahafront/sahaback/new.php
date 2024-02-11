@@ -73,7 +73,7 @@ session_start();
         <input type="email" name="email" placeholder="Enter Your email"><br>
         <label for="">Password</label>
         <input type="password" name="password" placeholder="Enter Your password"><br>
-        <label for="image">Select Image:</label>
+        <label for="image">Select Profile Image:</label>
         <input type="file" name="file" accept="image/*" required>
         <button type="submit">Submit</button><br>
         <br>

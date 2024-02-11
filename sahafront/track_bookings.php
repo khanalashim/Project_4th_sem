@@ -25,10 +25,10 @@ session_start();
                     <li><i class='bx bx-home'></i>Home</li>
                 </a>
                 <a href="track_bookings.php">
-                    <li id="active"><i class='bx bx-list-plus'></i>Track Bookings</li>
+                    <li id="active"><i class='bx bx-task'></i>Track Bookings</li>
                 </a>
-                <a href="trending.php">
-                    <li><i class='bx bx-trending-up'></i>Trending</li>
+                <a href="add_vehicle.php">
+                    <li><i class='bx bx-list-plus'></i>Add Vehicle</li>
                 </a>
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Services</li>
