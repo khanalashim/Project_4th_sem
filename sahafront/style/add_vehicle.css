@@ -1,0 +1,99 @@
+.vehicle_info{
+    display: block;
+}
+.vehicle_info a{
+    background-color: green;
+}
+.vehicle_info button{
+    text-align: center;
+    background-color: #718bc0;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid ;
+    cursor: pointer;
+    font-weight: 600;
+}
+.vehicle_info table{
+    border-bottom: 1px solid gray;
+    width: 100%;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+.table-light{
+    background-color: #00308F;
+    height: 67px;
+    color: white;
+    margin: 0;
+}
+.sidepanel{
+    /* display: none; */
+    background-color: #ffffff;
+    position: absolute;
+    top: 10%;
+    left: 43%;
+    z-index: 1;
+    float: right;
+    width: 34%;
+    height: 60vh;
+    flex-shrink: 0;
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    line-height: 36px;
+    transform: translateX(-1240px);
+    transition: transform 0.3s ease-in-out;
+}
+.sidepanel #name,#email,#phone{
+    padding: 12px 16px;
+    margin-left: 13px;
+    border-radius: 12px;
+    border: 1px solid gray;
+    margin-top: 14px;
+    
+
+}
+.sidepanel button{
+    display: block;
+    text-align: center;
+    background-color: #00308F;
+    color: white;
+    padding: 18px 24px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid ;
+    cursor: pointer;
+    font-weight: 600;
+    
+    transition: 0.3s;
+}
+.sidepanel button:hover{
+    background-color: #0843b7;
+}
+.sidepanel.open{
+    transform: translateX(-120px);
+}
+.sidepanel label{
+    color: black;
+    margin-left: 12px;
+    word-spacing: 4px;
+}
+.sidepanel #date1,#date2{
+    width: 45%;
+    margin-top: 15px;
+    margin-left: 12px;
+    padding: 12px 12px;
+    height: 5%;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 1px solid gray;
+}
+.sidepanel h1,h3{
+    color: black;
+    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    line-height: 40px;
+}

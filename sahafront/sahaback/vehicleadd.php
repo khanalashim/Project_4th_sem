@@ -10,10 +10,14 @@ $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
+session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
+    if (isset($_SESSION["User_id"])) {
+        $user_id = $_SESSION["User_id"];
+    } else {
+        $user_id = 0;
+    }
     $vehicle = $_POST['vehicle'];
     $model = $_POST['model'];
     $price = $_POST['price'];
@@ -39,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 move_uploaded_file($filetemp, $filedestination);
                 // Insert data into the database
-                $query1 = "INSERT INTO vehicles (img, vehiclename, model,price) VALUES ('$filedestination', '$vehicle', '$model',$price)";
+                $query1 = "INSERT INTO vehicles (user_id,img, vehiclename, model,price) VALUES ('$user_id','$filedestination', '$vehicle', '$model',$price)";
 
                 $result1 = $conn->query($query1);
 
