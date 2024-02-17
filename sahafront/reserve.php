@@ -101,7 +101,17 @@ session_start();
 
                     <div class='sidepanel'>
                         <h1>Fill the Information</h1>
-                        <form action="bookvehicle.php?veh_id=<?php echo $veh_id ?>" method="post">
+                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                            $user_available = true;
+                        } else {
+                            $user_available = false;
+                        } ?>
+                        <form action="<?php
+                        if ($user_available == true) {
+                            echo "bookvehicle.php?veh_id=" . $veh_id;
+                        } else {
+                            echo "sahaback/login.php";
+                        } ?>" method="post">
                             <label for="">From:</label>
                             <input id="date1" type="date" name="fromdate" required><br>
 

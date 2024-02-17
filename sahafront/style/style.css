@@ -206,6 +206,9 @@ i{
         display: grid;
         grid-template-columns: auto auto;
     }
+    .sidebar{
+        display: none;
+    }
 
 }
 @media screen and (max-width: 806px) {

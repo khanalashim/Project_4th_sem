@@ -85,7 +85,7 @@
           echo "<td>" . $row['firstname'] . "</td>";
           echo "<td>" . $row['lastname'] . "</td>";
           echo "<td>" . $row['email'] . "</td>";
-          echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
+          // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
           echo "<td><a href='del.php?delete_id=$id'><button>Delete</button></a>";
           echo "<a href='edit.php?edit_id=$id'><button>Edit</button></a> </td></tr>";
 

@@ -1,6 +1,6 @@
 <?php
 include "db.php";
-
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -86,16 +86,16 @@ include "db.php";
                         <h1>Fill the Information</h1>
                         <form action="sahaback/vehicleadd.php" method="post">
                             <label for="">Vehicle Name</label>
-                            <input type="text" required><br>
+                            <input type="text" name="vehicle" required><br>
 
                             <label for="">Model</label>
-                            <input type="text" required><br>
+                            <input type="text" name="model" required><br>
 
                             <label for="">Price</label>
-                            <input type="text" required><br>
+                            <input type="text" name="price" required><br>
 
                             <label for="">Image</label>
-                            <input type="file" accept="image/*" required><br>
+                            <input type="file" accept="image/*" name="vehicleimg" required><br>
 
                             <button type="submit">Continue</button>
                         </form>
@@ -140,7 +140,6 @@ include "db.php";
                                     echo "<td id='action'><a href='index.php'><button>Delete</button></a>";
                                     echo "<a href='index.php'><button> Edit</button></a></td>";
                                     echo "</tr>";
-
                                 }
                             } ?>
                         </tbody>

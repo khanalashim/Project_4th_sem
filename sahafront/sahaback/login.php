@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +22,7 @@ session_start();
             margin-right: auto;
             height: 56%;
             width: 24%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 7px 27px rgba(0, 0, 0, 0.35);
             word-spacing: 2px;
             letter-spacing: 2px;
         }

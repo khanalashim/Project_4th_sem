@@ -22,7 +22,7 @@ session_start();
             margin-right: auto;
             height: 56%;
             width: 24%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 7 25px rgba(0, 0, 0, 0.35);
             word-spacing: 2px;
             letter-spacing: 2px;
         }
@@ -73,8 +73,10 @@ session_start();
         <input type="email" name="email" placeholder="Enter Your email"><br>
         <label for="">Password</label>
         <input type="password" name="password" placeholder="Enter Your password"><br>
-        <label for="image">Select Profile Image:</label>
-        <input type="file" name="file" accept="image/*" required>
+        <label for="">Confirm Password</label>
+        <input type="password" name="confirm" placeholder="Confirm Your password"><br>
+        <!-- <label for="image">Select Profile Image:</label>
+        <input type="file" name="file" accept="image/*" required> -->
         <button type="submit">Submit</button><br>
         <br>
     </form>

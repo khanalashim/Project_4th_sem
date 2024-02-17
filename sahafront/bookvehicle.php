@@ -1,6 +1,6 @@
 <?php
 include "db.php";
-
+session_start();
 $fromdate = $_POST['fromdate'];
 $todate = $_POST['todate'];
 $name = $_POST['Name'];
@@ -16,11 +16,11 @@ while ($row = $result1->fetch_assoc()) {
     $vehiclename = $row['vehiclename'];
     $vehiclemodel = $row['model'];
     $vehicleprice = $row['price'];
-
+    $user_id = $_SESSION["User_id"];
 
 }
 
-$query = "INSERT INTO bookings(fromdate,todate,name,email,phone,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$fromdate','$todate','$name','$email','$phone','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
+$query = "INSERT INTO bookings(user_id,fromdate,todate,name,email,phone,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$fromdate','$todate','$name','$email','$phone','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
 $result = $conn->query($query);
 
 if ($result === TRUE) {
