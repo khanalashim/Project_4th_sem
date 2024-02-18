@@ -72,7 +72,9 @@ session_start();
                             echo "User";
                         } ?>
                     </p>
-                    <img height="40px" width="40px" src="profile.jpg" alt="">
+                    <div class="profile_image">
+                        <img height="40px" width="40px" src="profile.jpg" alt="">
+                    </div>
                 </div>
 
                 <h1>Home /</h1>
@@ -148,6 +150,8 @@ session_start();
         var date1 = document.getElementById('date1');
         var date2 = document.getElementById('date2');
         var result = document.getElementById('result');
+        var profile = document.querySelector('.profile_image');
+
         function resultchange() {
             var fromDate = new Date(date1.value);
             var toDate = new Date(date2.value);
@@ -169,6 +173,10 @@ session_start();
         date1.addEventListener("change", resultchange())
         date2.addEventListener("change", resultchange())
 
+
+        profile.addEventListener('click', function () {
+            window.location.href = 'logout.php';
+        });
 
 
     </script>

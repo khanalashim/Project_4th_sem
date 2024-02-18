@@ -12,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/add_vehicle.css">
 
+
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -35,8 +36,10 @@ session_start();
                 </a>
                 <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
+                    $user_available = true;
                 } else {
                     echo "sahaback/login.php";
+                    $user_available = false;
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -74,8 +77,7 @@ session_start();
                         } ?>
                     </p>
                     <div class="profile_image">
-                        <img height="40px" width="40px" src="profile.jpg" alt="">
-
+                        <img height="40px" width="40px" src="profile.jpg" alt="profile">
                     </div>
                 </div>
 
@@ -84,18 +86,24 @@ session_start();
                     <Button class="side-panel-toggle">Add Vehicle</Button>
                     <div class='sidepanel'>
                         <h1>Fill the Information</h1>
-                        <form action="sahaback/vehicleadd.php" method="post">
-                            <label for="">Vehicle Name</label>
-                            <input type="text" name="vehicle" required><br>
+                        <form action="<?php
+                        if ($user_available == true) {
+                            echo "sahaback/vehicleadd.php";
+                        } else {
+                            echo "sahaback/login.php";
+                        } ?>" method="post" enctype="multipart/form-data">
+                            <label for="">Vehicle Name:</label>
+                            <input type="text" name="vehicle" placeholder="Enter Your Vehicle Name" required><br>
 
-                            <label for="">Model</label>
-                            <input type="text" name="model" required><br>
+                            <label for="">Model:</label>
+                            <input type="text" name="model" placeholder="Enter Your Model" required><br>
 
-                            <label for="">Price</label>
-                            <input type="text" name="price" required><br>
+                            <label for="">Price:</label>
+                            <input type="text" name="price" placeholder="Enter the Price " required><br>
 
-                            <label for="">Image</label>
-                            <input type="file" accept="image/*" name="vehicleimg" required><br>
+                            <label for="">Image:</label>
+                            <input type="file" accept="image/*" name="vehicleimg" placeholder="Insert the image"
+                                required><br>
 
                             <button type="submit">Continue</button>
                         </form>
@@ -137,8 +145,13 @@ session_start();
                                     echo "<td>" . $row['vehiclename'] . "</td>";
                                     echo "<td>" . $row['model'] . "</td>";
                                     echo "<td>" . $row['price'] . "</td>";
-                                    echo "<td id='action'><a href='index.php'><button>Delete</button></a>";
-                                    echo "<a href='index.php'><button> Edit</button></a></td>";
+                                    if ($user_available == true) {
+                                        echo "<td id='action'><a href='sahaback/vehicledel.php?delete_id=$id'><button>Delete</button></a>";
+                                        echo "<a href='sahaback/vehicleedit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                    } else {
+                                        echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
+                                        echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
+                                    }
                                     echo "</tr>";
                                 }
                             } ?>
@@ -154,6 +167,8 @@ session_start();
                 var date1 = document.getElementById('date1');
                 var date2 = document.getElementById('date2');
                 var result = document.getElementById('result');
+                var profile = document.querySelector('.profile_image');
+
                 function resultchange() {
                     var fromDate = new Date(date1.value);
                     var toDate = new Date(date2.value);
@@ -172,9 +187,13 @@ session_start();
                     main.style.filter = 'blur(7px);';
 
                 })
-                date1.addEventListener("change", resultchange())
-                date2.addEventListener("change", resultchange())
+                // date1.addEventListener("change", resultchange())
+                // date2.addEventListener("change", resultchange())
 
+
+                profile.addEventListener('click', function () {
+                    window.location.href = 'logout.php';
+                });
 
 
             </script>

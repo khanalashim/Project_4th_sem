@@ -145,8 +145,10 @@ i{
 }
 .vehicle_info{
     display: grid;
-    grid-template-columns: auto auto auto;
-    height: 100vh;
+    /* grid-template-columns: auto auto auto;
+    height: 100vh; */
+    grid-template-columns: repeat(3,1fr); /* Adjust column width as needed */
+    gap: 10px; /* Adjust gap between vehicles as needed */
     background-color: white;
     width: 98%;
     margin-left: auto;
@@ -204,11 +206,9 @@ i{
 @media screen and (max-width: 1126px) {
     .vehicle_info{
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto;
     }
-    .sidebar{
-        display: none;
-    }
+
 
 }
 @media screen and (max-width: 806px) {

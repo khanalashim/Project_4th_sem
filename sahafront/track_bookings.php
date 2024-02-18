@@ -35,8 +35,10 @@ session_start();
                 </a>
                 <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
+                    $user_available = true;
                 } else {
                     echo "sahaback/login.php";
+                    $user_available = false;
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -113,8 +115,14 @@ session_start();
                                     echo "<td>" . $row['vehiclename'] . "</td>";
                                     echo "<td>" . $row['fromdate'] . "</td>";
                                     echo "<td>" . $row['todate'] . "</td>";
-                                    echo "<td id='action'><a href='booking_delete.php?delete_id=$id'><button>Delete</button></a>";
-                                    echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                    if ($user_available == true) {
+                                        echo "<td id='action'><a href='booking_delete.php?delete_id=$id'><button>Delete</button></a>";
+                                        echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                    } else {
+                                        echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
+                                        echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
+
+                                    }
                                     echo "</tr>";
 
                                 }
@@ -124,6 +132,13 @@ session_start();
                 </div>
             </div>
         </div>
+        <script>
+            var profile = document.querySelector('.profile_image');
+
+            profile.addEventListener('click', function () {
+                window.location.href = 'logout.php';
+            });
+        </script>
 </body>
 
 </html>
