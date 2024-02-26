@@ -41,5 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 }
 $conn->close();
-header('location: vehicle.php');
+if ($_SESSION['User_id'] == 0) {
+    header('location: vehicle.php');
+} elseif ($_SESSION['User_id'] != 0) {
+    header('location: ../add_vehicle.php');
+}
 ?>

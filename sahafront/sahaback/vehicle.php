@@ -1,11 +1,11 @@
 <?php
-session_start();
-$ok = $_SESSION['User_id'];
-if ($ok === 0) {
-  echo "Welcome ,Admin";
-} else {
-  header('location: login.php');
-}
+// session_start();
+// $ok = $_SESSION['User_id'];
+// if ($ok === 0) {
+//   echo "Welcome ,Admin";
+// } else {
+//   header('location: login.php');
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
