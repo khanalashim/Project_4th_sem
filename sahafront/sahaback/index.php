@@ -1,6 +1,6 @@
 <?php
 session_start();
-$ok = $_SESSION['User_id'];
+$ok = $_SESSION['Admin_id'];
 if ($ok === 0) {
   echo "Welcome ,Admin";
 } else {

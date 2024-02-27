@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST["password"];
 
     if ($email == "admin@gmail.com" and $password == "9821") {
-        $_SESSION["User_id"] = 0;
+        $_SESSION["Admin_id"] = 0;
         header("location: index.php");
     } else {
 
