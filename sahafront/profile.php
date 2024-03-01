@@ -52,7 +52,7 @@ if ($conn->connect_error) {
                     <li><i class='bx bx-list-plus'></i>Add Vehicle</li>
                 </a>
                 <a href="services.php">
-                    <li><i class='bx bxs-package'></i>Services</li>
+                    <li><i class='bx bxs-package'></i>Become Seller</li>
                 </a>
                 <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
@@ -116,11 +116,11 @@ if ($conn->connect_error) {
                             echo "<div id='prof_cont'><img id='frozen' src='vector.png'>";
                             echo "<img id='profile' src='profile.jpg' anchor='frozen'>";
                             echo "<h2 id='name'>" . $row['firstname'] . " " . $row['lastname'] . " </h2>";
-                            echo "<div class='main_prof'><div id='left_prof'><h4> Admin</h4>";
+                            echo "<div class='main_prof'><div id='left_prof'><h4> ⭐User</h4>";
                             echo "<i class='bx bxs-map'></i><h5>Bharatpur-11</h5>";
                             echo "</div>";
                             echo "<div id='right_prof'> ";
-                            echo "<div class='email_cont'><h3>Email</h3><i class='bx bxs-envelope'><span>" . $row['email'] . "</span></i></div><div class='phone_cont'><h3>Phone</h3></div></div></div>";
+                            echo "<div class='email_cont'><h3>Email</h3><i class='bx bxs-envelope'><span>" . $row['email'] . "</span></i></div><div class='phone_cont'><h3>Phone</h3><i class='bx bxs-phone'><span>xxxxxxxxx</span></i></div></div></div>";
                             echo "</div>";
                             echo "</div>";
                         }

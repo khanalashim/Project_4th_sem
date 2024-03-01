@@ -50,12 +50,11 @@ h5{
     display: inline-block;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: gray;
-
-
 }
 .main_prof{
     display: flex;
     flex-direction: row;
+    
 }
 #left_prof{
     display: inline-block;
@@ -64,6 +63,8 @@ h5{
 #left_prof h4{
     text-align: center;
     margin-top: 12px;
+    color: #291e6e;
+    font-family: Arial, Helvetica, sans-serif;
 }
 #right_prof{
     display: flex;
@@ -75,12 +76,19 @@ h5{
     width: 40%;
     margin-left: 42px;
 }
-.bxs-envelope{
+.bxs-envelope, .bxs-phone{
     display: flex;
     font-size: 43px;
     margin-top: 23px;
     width: fit-content;
     color: cadetblue;
+}
+.bxs-phone span{
+    color: black;
+    font-size: 18px;
+    justify-content: center;
+    align-self: center;
+
 }
 .bxs-envelope span{
     color: black;
@@ -91,8 +99,5 @@ h5{
 }
 .phone_cont{
     width: 60%;
-}
-#actual_mail{
-    width: fit-content;
-    display: block;
+    display: inline-block;
 }
