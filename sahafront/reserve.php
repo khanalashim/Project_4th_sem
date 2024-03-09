@@ -105,12 +105,33 @@ session_start();
                         <h1>Fill the Information</h1>
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             $user_available = true;
+                            if (isset($_SESSION["User_id"])) {
+                                // User is logged in, so echo the id
+                                $user_id = $_SESSION["User_id"];
+                            } else {
+                                // User is not logged in
+                        
+                            }
+                            $query = "SELECT * FROM users WHERE id='$user_id'";
+                            $result = $conn->query($query);
+
+                            if ($result->num_rows > 0) {
+
+                                while ($row = $result->fetch_assoc()) {
+                                    $user_verify = $row['user_verify'];
+                                }
+                            }
                         } else {
                             $user_available = false;
                         } ?>
                         <form action="<?php
                         if ($user_available == true) {
-                            echo "bookvehicle.php?veh_id=" . $veh_id;
+                            if ($user_verify == 1) {
+                                echo "bookvehicle.php?veh_id=" . $veh_id;
+                            } else {
+                                echo "services.php";
+
+                            }
                         } else {
                             echo "sahaback/login.php";
                         } ?>" method="post">

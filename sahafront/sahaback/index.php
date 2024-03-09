@@ -2,7 +2,7 @@
 session_start();
 $ok = $_SESSION['Admin_id'];
 if ($ok === 0) {
-  echo "Welcome ,Admin";
+  echo "";
 } else {
   header('location: login.php');
 }
@@ -39,6 +39,9 @@ if ($ok === 0) {
           </li>
           <li class="nav-item">
             <a class="nav-link" href="vehicle.php">Vehicles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="verify_request.php">Requests</a>
           </li>
 
         </ul>

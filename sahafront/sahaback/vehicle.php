@@ -37,6 +37,9 @@
           <li class="nav-item">
             <a class="nav-link active" href="vehicle.php">Vehicles</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="verify_request.php">Requests</a>
+          </li>
 
         </ul>
         <form class="search-box d-flex">

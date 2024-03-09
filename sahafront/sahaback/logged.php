@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $user_id = $row['id'];
             $firstname = $row['firstname'];
             $lastname = $row['lastname'];
+            $user_verify = $row['user_verify'];
         }
 
         if ($result->num_rows > 0) {
@@ -36,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["User_lastname"] = $lastname;
             $_SESSION["User_email"] = $email;
             $_SESSION["User_id"] = $user_id;
+            $_SESSION["User_verify"] = $user_verify;
             $_SESSION["loggedin"] = true;
 
             echo $_SESSION["User_firstname"], $_SESSION["User_lastname"], $_SESSION["User_email"];

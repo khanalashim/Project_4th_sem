@@ -32,14 +32,15 @@ session_start();
                     <li id="active"><i class='bx bx-list-plus'></i>Add Vehicle</li>
                 </a>
                 <a href="services.php">
-                    <li><i class='bx bxs-package'></i>Become Seller</li>
+                    <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php $user_available = false;
+                if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                     $user_available = true;
                 } else {
                     echo "sahaback/login.php";
-                    $user_available = false;
+
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -68,9 +69,27 @@ session_start();
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php $user_id = 0;
+                        $user_verify = 0;
+                        if (isset($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
+                            if (isset($_SESSION["User_id"])) {
+                                // User is logged in, so echo the id
+                                $user_id = $_SESSION["User_id"];
+                            } else {
+                                // User is not logged in
+                                echo "";
+                            }
+                            $query1 = "SELECT * FROM users WHERE id='$user_id'";
+                            $result1 = $conn->query($query1);
+
+                            if ($result1->num_rows > 0) {
+
+                                while ($row1 = $result1->fetch_assoc()) {
+                                    $user_verify = $row1['user_verify'];
+                                }
+                            }
                         } else {
                             // User is not logged in
                             echo "User";
@@ -87,8 +106,13 @@ session_start();
                     <div class='sidepanel'>
                         <h1>Fill the Information</h1>
                         <form action="<?php
-                        if ($user_available == true) {
-                            echo "sahaback/vehicleadd.php";
+                        if ($user_available) {
+                            if ($user_verify == 1) {
+                                echo "sahaback/vehicleadd.php";
+                            } else {
+                                echo "services.php";
+
+                            }
                         } else {
                             echo "sahaback/login.php";
                         } ?>" method="post" enctype="multipart/form-data">

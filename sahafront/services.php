@@ -30,7 +30,7 @@ session_start();
                     <li><i class='bx bx-list-plus'></i>Add Vehicle</li>
                 </a>
                 <a href="services.php">
-                    <li id="active"><i class='bx bxs-package'></i>Become Seller</li>
+                    <li id="active"><i class='bx bxs-package'></i>Verification</li>
                 </a>
                 <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
@@ -77,15 +77,50 @@ session_start();
                 <h1>Home /</h1>
                 <div class="vehicle_info">
                     <div class="vehicle_container">
-                        <form action="verify.php" method="post" enctype="multipart/form-data">
-                            <label id="head" for="">Verification</label><br>
-                            <label for="">Front face Nationality ID</label>
-                            <input type="file" required>
+                        <?php
+                        $user_id = 0;
+                        if (isset($_SESSION["User_id"])) {
+                            // User is logged in, so echo the first name
+                            $user_id = $_SESSION['User_id'];
+                        }
+                        $query = "SELECT * FROM users WHERE id='$user_id'";
+                        $result = $conn->query($query);
+                        $verify_request = false;
+                        $user_verify = 0;
 
-                            <label for="">Back face Nationality ID</label>
-                            <input type="file" required>
-                            <button id="verify" type="submit">Verify</button>
-                        </form>
+                        if ($result->num_rows > 0) {
+
+                            while ($row = $result->fetch_assoc()) {
+                                $verify_request = $row['verify_request'];
+                                $user_verify = $row['user_verify'];
+                            }
+                        }
+
+                        if ($verify_request == true && $user_verify == 0) {
+                            echo "";
+
+                            ?>
+                            <img height="140px" width="160px" src="pending1.gif" alt="pending" srcset="">
+                            <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
+                                id="pending">Your Request Pending...</h2>
+                            <?php
+                        } elseif ($user_verify == 1) { ?>
+                            <img height="140px" width="160px" src="success.gif" alt="success" srcset="">
+                            <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
+                                id="pending">You Are Successfully Verified</h2>
+                        <?php } else { ?>
+                            <form action="verify.php?user_id=<?php if (isset($_SESSION['User_id'])) {
+                                echo $_SESSION['User_id'];
+                            } ?>" method="post" enctype="multipart/form-data">
+                                <label id="head" for="">Verification</label><br>
+                                <label for="">Front face Nationality ID</label>
+                                <input name="front_img" type="file" accept="image/*" required>
+
+                                <label for="">Back face Nationality ID</label>
+                                <input name="back_img" type="file" accept="image/*" required>
+                                <button id="verify" type="submit">Verify</button>
+                            </form>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
