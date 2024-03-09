@@ -13,6 +13,7 @@ session_start();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/track_bookings.css">
+    <link rel="stylesheet" href="style/booking_history.css">
 
 </head>
 
@@ -25,10 +26,10 @@ session_start();
                     <li><i class='bx bx-home'></i>Home</li>
                 </a>
                 <a href="track_bookings.php">
-                    <li id="active"><i class='bx bx-task'></i>Track Bookings</li>
+                    <li><i class='bx bx-task'></i>Track Bookings</li>
                 </a>
                 <a href="booking_history.php">
-                    <li><i class='bx bx-list-plus'></i>Booking History</li>
+                    <li id="active"><i class='bx bx-list-plus'></i>Booking History</li>
                 </a>
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
@@ -91,7 +92,7 @@ session_start();
                                 <td>Name</td>
                                 <td>From</td>
                                 <td>To</td>
-                                <td>Action</td>
+                                <td>Status</td>
                             </tr>
                         </thead>
                         <tbody>
@@ -115,14 +116,7 @@ session_start();
                                     echo "<td>" . $row['vehiclename'] . "</td>";
                                     echo "<td>" . $row['fromdate'] . "</td>";
                                     echo "<td>" . $row['todate'] . "</td>";
-                                    if ($user_available == true) {
-                                        echo "<td id='action'><a href='booking_delete.php?delete_id=$id'><button>Delete</button></a>";
-                                        echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
-                                    } else {
-                                        echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
-                                        echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
-
-                                    }
+                                    echo "<td id='action'>Completed</td>";
                                     echo "</tr>";
 
                                 }

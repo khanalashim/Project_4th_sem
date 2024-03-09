@@ -28,8 +28,8 @@ session_start();
                 <a href="track_bookings.php">
                     <li><i class='bx bx-task'></i>Track Bookings</li>
                 </a>
-                <a href="add_vehicle.php">
-                    <li id="active"><i class='bx bx-list-plus'></i>Add Vehicle</li>
+                <a href="booking_history.php">
+                    <li id="active"><i class='bx bx-list-plus'></i>Booking History</li>
                 </a>
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
