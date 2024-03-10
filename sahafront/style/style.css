@@ -117,6 +117,48 @@ i{
     /* border-radius: 12px; */
     border-right: 6px solid #00308F ;
 }
+.seller{
+    margin-bottom: auto;
+    display: block;
+    margin-top: 62%;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    box-shadow: 0px 0px 3px 0px gray;
+    
+    /* border-top: 2px solid #00308f;
+    border-bottom: 2px solid #00308f; */
+    height: 80px;
+    width: 80%;
+    padding: 2px 14px;
+    border-radius: 26px;
+    cursor: pointer; 
+}
+.seller:hover{
+    border-left: none;
+    border-top: 2px solid #00308f;
+    border-bottom: 2px solid #00308f;
+}
+.seller h1{
+    
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+.seller h1 i{
+    color: #00308F;
+}
+.seller a{
+    display: block;
+    text-decoration: none;
+    
+    font-size: 12px;
+}
+.seller a p{
+    text-align: center;
+    color: #00308F;
+}
 #active{
     color: #00308F;
     /* border-radius: 12px; */
