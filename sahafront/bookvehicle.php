@@ -17,10 +17,11 @@ while ($row = $result1->fetch_assoc()) {
     $vehiclemodel = $row['model'];
     $vehicleprice = $row['price'];
     $user_id = $_SESSION["User_id"];
+    $status = 'p';
 
 }
 
-$query = "INSERT INTO bookings(user_id,fromdate,todate,name,email,phone,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$fromdate','$todate','$name','$email','$phone','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
+$query = "INSERT INTO bookings(user_id,status,fromdate,todate,name,email,phone,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$status','$fromdate','$todate','$name','$email','$phone','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
 $result = $conn->query($query);
 
 if ($result === TRUE) {

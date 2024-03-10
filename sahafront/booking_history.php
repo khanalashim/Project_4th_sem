@@ -116,7 +116,14 @@ session_start();
                                     echo "<td>" . $row['vehiclename'] . "</td>";
                                     echo "<td>" . $row['fromdate'] . "</td>";
                                     echo "<td>" . $row['todate'] . "</td>";
-                                    echo "<td id='action'>Completed</td>";
+                                    if ($row['status'] == 'c') {
+                                        echo "<td id='action_c'>Completed</td>";
+                                    } elseif ($row['status'] == 'p') {
+                                        echo "<td id='action_p'>Pending</td>";
+                                    } elseif ($row['status'] == 'f') {
+                                        echo "<td id='action_f'>Failed</td>";
+                                    }
+
                                     echo "</tr>";
 
                                 }

@@ -109,21 +109,25 @@ session_start();
 
                                 while ($row = $result->fetch_assoc()) {
                                     $id = $row['id'];
-                                    echo "<tr>";
-                                    echo "<td>" . $row['id'] . "</td>";
-                                    echo "<td> <img height='89px' width='120px' src='sahaback/" . $row['vehicleimg'] . "'></td>";
-                                    echo "<td>" . $row['vehiclename'] . "</td>";
-                                    echo "<td>" . $row['fromdate'] . "</td>";
-                                    echo "<td>" . $row['todate'] . "</td>";
-                                    if ($user_available == true) {
-                                        echo "<td id='action'><a href='booking_delete.php?delete_id=$id'><button>Delete</button></a>";
-                                        echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                    if ($row['status'] == 'f') {
+                                        continue;
                                     } else {
-                                        echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
-                                        echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
+                                        echo "<tr>";
+                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td> <img height='89px' width='120px' src='sahaback/" . $row['vehicleimg'] . "'></td>";
+                                        echo "<td>" . $row['vehiclename'] . "</td>";
+                                        echo "<td>" . $row['fromdate'] . "</td>";
+                                        echo "<td>" . $row['todate'] . "</td>";
+                                        if ($user_available == true) {
+                                            echo "<td id='action'><a href='booking_delete.php?delete_id=$id'><button>Delete</button></a>";
+                                            echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                        } else {
+                                            echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
+                                            echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
 
+                                        }
+                                        echo "</tr>";
                                     }
-                                    echo "</tr>";
 
                                 }
                             } ?>
