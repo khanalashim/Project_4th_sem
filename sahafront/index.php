@@ -69,7 +69,7 @@ if ($conn->connect_error) {
             </ul>
             <div class="seller">
                 <h1><i class='bx bx-money-withdraw'></i>Become a seller</h1>
-                <a href="#">
+                <a href="../seller/registration.php">
                     <p>Regsiter<i class='bx bx-right-arrow-alt'></i></p>
                 </a>
             </div>

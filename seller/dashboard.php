@@ -26,8 +26,8 @@ if ($conn->connect_error) {
     <title>Document</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/profile.css">
+    <link rel="stylesheet" href="../sahafront/style/style.css">
+    <link rel="stylesheet" href="style/dashboard.css">
     <style>
         .bxs-star {
             color: #d1b56a;
@@ -42,25 +42,25 @@ if ($conn->connect_error) {
             <h1>Sahayatri
             </h1>
             <ul>
-                <a href="index.php">
-                    <li><i class='bx bx-home'></i>Home</li>
+                <a href="dashboard.php">
+                    <li id="active"><i class='bx bx-home'></i>Dashboard</li>
                 </a>
-                <a href="track_bookings.php">
-                    <li><i class='bx bx-task'></i>Track Bookings</li>
+                <a href="add_vehicle.php">
+                    <li><i class='bx bx-task'></i>Add Vehicles</li>
                 </a>
-                <a href="booking_history.php">
-                    <li><i class='bx bx-list-plus'></i>Booking History</li>
+                <a href="track_vehicles.php">
+                    <li><i class='bx bx-list-plus'></i>Track Vehicles</li>
                 </a>
-                <a href="services.php">
-                    <li><i class='bx bxs-package'></i>Verification</li>
+                <a href="booked_vehicles.php">
+                    <li><i class='bx bxs-package'></i>Booked Vehicles</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
-                    echo "sahaback/login.php";
+                    echo "login.php";
                 } ?>">
-                    <li id="active"><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                    <li><i class='bx bx-log-in'></i>
+                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -69,8 +69,8 @@ if ($conn->connect_error) {
                 </a>
             </ul>
             <div class="seller">
-                <h1><i class='bx bx-money-withdraw'></i>Become a seller</h1>
-                <a href="#">
+                <h1><i class='bx bx-money-withdraw'></i>Become a Buyer</h1>
+                <a href="../sahafront/sahaback/new.php">
                     <p>Regsiter<i class='bx bx-right-arrow-alt'></i></p>
                 </a>
             </div>
@@ -93,25 +93,24 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php if (isset($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
-                            echo $_SESSION["User_firstname"];
+                            echo $_SESSION["Seller_firstname"];
                         } else {
                             // User is not logged in
-                            echo "User";
+                            echo "Seller";
                         } ?>
                     </p>
                     <div class="profile_image">
-                        <img height="40px" width="40px" src="profile.jpg" alt="">
+                        <img height="40px" width="40px" src="../sahafront/profile.jpg" alt="">
 
                     </div>
                 </div>
 
-                <h1>Home /</h1>
+                <h1>Dashboard /</h1>
                 <div class="vehicle_info">
                     <?php
-                    $user = $_SESSION['User_id'];
-                    $query = "SELECT * FROM users WHERE id='$user'";
+                    $query = "SELECT * FROM vehicles";
                     $result = $conn->query($query);
 
                     if ($result->num_rows > 0) {
@@ -119,15 +118,7 @@ if ($conn->connect_error) {
                         while ($row = $result->fetch_assoc()) {
                             $veh_id = $row['id'];
                             echo "<div class='vehicle_container'>";
-                            echo "<div id='prof_cont'><img id='frozen' src='vector.png'>";
-                            echo "<img id='profile' src='profile.jpg' anchor='frozen'>";
-                            echo "<h2 id='name'>" . $row['firstname'] . " " . $row['lastname'] . " </h2>";
-                            echo "<div class='main_prof'><div id='left_prof'><h4> ⭐User</h4>";
-                            echo "<i class='bx bxs-map'></i><h5>Bharatpur-11</h5>";
-                            echo "</div>";
-                            echo "<div id='right_prof'> ";
-                            echo "<div class='email_cont'><h3>Email</h3><i class='bx bxs-envelope'><span>" . $row['email'] . "</span></i></div><div class='phone_cont'><h3>Phone</h3><i class='bx bxs-phone'><span>xxxxxxxxx</span></i></div></div></div>";
-                            echo "</div>";
+
                             echo "</div>";
                         }
                     } ?>
@@ -142,7 +133,6 @@ if ($conn->connect_error) {
         profile.addEventListener('click', function () {
             window.location.href = 'logout.php';
         });
-
     </script>
 
 </body>

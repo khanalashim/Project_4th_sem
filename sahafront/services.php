@@ -46,6 +46,12 @@ session_start();
                     </li>
                 </a>
             </ul>
+            <div class="seller">
+                <h1><i class='bx bx-money-withdraw'></i>Become a seller</h1>
+                <a href="#">
+                    <p>Regsiter<i class='bx bx-right-arrow-alt'></i></p>
+                </a>
+            </div>
         </div>
 
         <div class="main">
