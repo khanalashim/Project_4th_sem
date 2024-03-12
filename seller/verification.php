@@ -110,7 +110,7 @@ if ($conn->connect_error) {
                     </div>
                 </div>
 
-                <h1>Dashboard /</h1>
+                <h1>Verification /</h1>
                 <div class="vehicle_info">
                     <?php
                     $query = "SELECT * FROM vehicles";

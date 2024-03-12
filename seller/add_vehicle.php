@@ -54,6 +54,9 @@ if ($conn->connect_error) {
                 <a href="booked_vehicles.php">
                     <li><i class='bx bxs-package'></i>Booked Vehicles</li>
                 </a>
+                <a href="verification.php">
+                    <li><i class='bx bxs-package'></i>Verification</li>
+                </a>
                 <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {

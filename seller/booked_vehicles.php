@@ -43,7 +43,7 @@ if ($conn->connect_error) {
             </h1>
             <ul>
                 <a href="dashboard.php">
-                    <li id="active"><i class='bx bx-home'></i>Dashboard</li>
+                    <li><i class='bx bx-home'></i>Dashboard</li>
                 </a>
                 <a href="add_vehicle.php">
                     <li><i class='bx bx-task'></i>Add Vehicles</li>
@@ -52,7 +52,7 @@ if ($conn->connect_error) {
                     <li><i class='bx bx-list-plus'></i>Track Vehicles</li>
                 </a>
                 <a href="booked_vehicles.php">
-                    <li><i class='bx bxs-package'></i>Booked Vehicles</li>
+                    <li id="active"><i class='bx bxs-package'></i>Booked Vehicles</li>
                 </a>
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
@@ -110,7 +110,7 @@ if ($conn->connect_error) {
                     </div>
                 </div>
 
-                <h1>Dashboard /</h1>
+                <h1>Booked Vehicles /</h1>
                 <div class="vehicle_info">
                     <?php
                     $query = "SELECT * FROM vehicles";
