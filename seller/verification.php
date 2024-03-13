@@ -26,7 +26,7 @@ if ($conn->connect_error) {
     <title>Document</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="../sahafront/style/style.css">
+    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/dashboard.css">
     <style>
         .bxs-star {
