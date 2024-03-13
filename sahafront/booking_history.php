@@ -116,6 +116,20 @@ session_start();
 
                                 while ($row = $result->fetch_assoc()) {
                                     $id = $row['id'];
+                                    $veh_id = $row['vehicleid'];
+                                    $query2 = "SELECT * FROM vehicles WHERE id='$veh_id'";
+                                    $result2 = $conn->query($query2);
+                                    if ($result->num_rows > 0) {
+
+                                        while ($row = $result->fetch_assoc()) {
+                                            $seller_id = $row['seller_id'];
+                                        }
+                                    }
+
+                                    $veh_name = $row['vehiclename'];
+                                    $veh_price = $row['vehicleprice'];
+                                    $veh_model = $row['vehiclemodel'];
+                                    $veh_img = $row['vehicleimg'];
                                     echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td> <img height='89px' width='120px' src='sahaback/" . $row['vehicleimg'] . "'></td>";
@@ -124,6 +138,8 @@ session_start();
                                     echo "<td>" . $row['todate'] . "</td>";
                                     if ($row['status'] == 'c') {
                                         echo "<td id='action_c'>Completed</td>";
+                                        $query1 = "INSERT INTO booked (user_id, seller_id, veh_id, veh_name, veh_price, veh_model, veh_img) VALUES ('$id','$seller_id','$veh_id','$veh_name','$veh_price','$veh_model','$veh_img')";
+                                        $result1 = $conn->query($query1);
                                     } elseif ($row['status'] == 'p') {
                                         echo "<td id='action_p'>Pending</td>";
                                     } elseif ($row['status'] == 'f') {

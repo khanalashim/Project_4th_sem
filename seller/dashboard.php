@@ -113,18 +113,37 @@ if ($conn->connect_error) {
                 <h1>Dashboard /</h1>
                 <div class="vehicle_info">
                     <?php
-                    $query = "SELECT * FROM vehicles";
+                    $id = $_SESSION['Seller_id'];
+                    $query = "SELECT * FROM vehicles WHERE seller_id='$id'";
                     $result = $conn->query($query);
+                    $count_v = 0;
+                    $count_s = 0;
 
                     if ($result->num_rows > 0) {
 
                         while ($row = $result->fetch_assoc()) {
-                            $veh_id = $row['id'];
-                            echo "<div class='vehicle_container'>";
-
-                            echo "</div>";
+                            $count_v = $count_v + 1;
                         }
-                    } ?>
+                    }
+
+                    $query1 = "SELECT * FROM booked WHERE seller_id='$id'";
+                    $result1 = $conn->query($query1);
+                    if ($result1->num_rows > 0) {
+
+                        while ($row1 = $result1->fetch_assoc()) {
+                            $count_s = $count_s + 1;
+                        }
+                    }
+
+
+                    echo "<div class='vehicle_container'>";
+                    echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
+                    echo "<div class='total_sells'><h1><i class='bx bxs-package'></i>Total Sells</h1><h2>" . $count_s . "</h2></div>";
+                    echo "<div class='total_earning'><h1><i class='bx bx-dollar'></i>Total Earning</h1><h2>Rs. 45000</h2></div>";
+                    echo "<div class='total_categories'><h1><i class='bx bxs-duplicate'></i>Total Categories</h1><h2>5</h2></div>";
+                    echo "</div>";
+                    // }
+                    // }               ?>
 
                 </div>
             </div>

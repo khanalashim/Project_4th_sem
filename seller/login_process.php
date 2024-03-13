@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $result = $conn->query($query);
 
     while ($row = $result->fetch_assoc()) {
-        $user_id = $row['id'];
+        $user_id = $row['s_id'];
         $firstname = $row['firstname'];
         $lastname = $row['lastname'];
         // $user_verify = $row['user_verify'];
