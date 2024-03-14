@@ -119,17 +119,18 @@ session_start();
                                     $veh_id = $row['vehicleid'];
                                     $query2 = "SELECT * FROM vehicles WHERE id='$veh_id'";
                                     $result2 = $conn->query($query2);
-                                    if ($result->num_rows > 0) {
+                                    if ($result2->num_rows > 0) {
 
-                                        while ($row = $result->fetch_assoc()) {
-                                            $seller_id = $row['seller_id'];
+                                        while ($row2 = $result2->fetch_assoc()) {
+                                            $seller_id = $row2['seller_id'];
+
                                         }
                                     }
-
                                     $veh_name = $row['vehiclename'];
                                     $veh_price = $row['vehicleprice'];
                                     $veh_model = $row['vehiclemodel'];
                                     $veh_img = $row['vehicleimg'];
+
                                     echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td> <img height='89px' width='120px' src='sahaback/" . $row['vehicleimg'] . "'></td>";

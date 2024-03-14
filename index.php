@@ -9,6 +9,9 @@
 
 <body>
     <a href="sahafront/index.php"><button>Main Page</button></a>
+    <a href="seller/dashboard.php"><button>Become a seller</button></a>
+
+
 </body>
 
 </html>

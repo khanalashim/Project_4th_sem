@@ -35,7 +35,7 @@ i{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
     gap: 20px;
     background-color: #ffffffc7;  
     /* margin-right: 200px; */
@@ -183,9 +183,9 @@ i{
 }
 .vehicle_info{
     display: grid;
-    /* grid-template-columns: auto auto auto;
-    height: 100vh; */
-    grid-template-columns: repeat(3,1fr); /* Adjust column width as needed */
+    /* grid-template-columns: auto auto auto;*/
+    height: 100vh; 
+    /* grid-template-columns: repeat(3,1fr); Adjust column width as needed */
     gap: 10px; /* Adjust gap between vehicles as needed */
     background-color: white;
     width: 98%;

@@ -14,6 +14,7 @@ $result1 = $conn->query($query1);
 while ($row = $result1->fetch_assoc()) {
     $vehicleimg = $row['img'];
     $vehiclename = $row['vehiclename'];
+    $vehicleid = $row['vehicleid'];
     $vehiclemodel = $row['model'];
     $vehicleprice = $row['price'];
     $user_id = $_SESSION["User_id"];
@@ -21,7 +22,7 @@ while ($row = $result1->fetch_assoc()) {
 
 }
 
-$query = "INSERT INTO bookings(user_id,status,fromdate,todate,name,email,phone,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$status','$fromdate','$todate','$name','$email','$phone','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
+$query = "INSERT INTO bookings(user_id,status,fromdate,todate,name,email,phone,vehicleid,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$status','$fromdate','$todate','$name','$email','$phone','$vehicleid','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
 $result = $conn->query($query);
 
 if ($result === TRUE) {

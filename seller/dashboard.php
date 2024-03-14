@@ -61,6 +61,7 @@ if ($conn->connect_error) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
+                    header('location: login.php');
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
@@ -83,7 +84,7 @@ if ($conn->connect_error) {
 
             <div class="vehicle">
                 <div class="nav_search">
-                    <div class="search">
+                    <!-- <div class="search">
                         <input id="search" type="text" placeholder="Search...">
                         <a href="#">
                             <div class="search_icon">
@@ -91,7 +92,7 @@ if ($conn->connect_error) {
 
                             </div>
                         </a>
-                    </div>
+                    </div> -->
 
 
 
@@ -118,6 +119,7 @@ if ($conn->connect_error) {
                     $result = $conn->query($query);
                     $count_v = 0;
                     $count_s = 0;
+                    $earn_s = 0;
 
                     if ($result->num_rows > 0) {
 
@@ -132,18 +134,27 @@ if ($conn->connect_error) {
 
                         while ($row1 = $result1->fetch_assoc()) {
                             $count_s = $count_s + 1;
+                            $earn_s = $earn_s + $row1['veh_price'];
                         }
                     }
 
+                    $query2 = "SELECT * FROM seller WHERE s_id='$id'";
+                    $result2 = $conn->query($query2);
+                    if ($result2->num_rows > 0) {
+
+                        while ($row2 = $result2->fetch_assoc()) {
+                            $category = $row2['veh_category'];
+                        }
+                    }
 
                     echo "<div class='vehicle_container'>";
                     echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
                     echo "<div class='total_sells'><h1><i class='bx bxs-package'></i>Total Sells</h1><h2>" . $count_s . "</h2></div>";
-                    echo "<div class='total_earning'><h1><i class='bx bx-dollar'></i>Total Earning</h1><h2>Rs. 45000</h2></div>";
-                    echo "<div class='total_categories'><h1><i class='bx bxs-duplicate'></i>Total Categories</h1><h2>5</h2></div>";
+                    echo "<div class='total_earning'><h1><i class='bx bx-dollar'></i>Total Earning</h1><h2>Rs. " . $earn_s . "</h2></div>";
+                    echo "<div class='total_categories'><h1><i class='bx bxs-duplicate'></i>Total Categories</h1><h2>" . $category . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }               ?>
+                    // }              ?>
 
                 </div>
             </div>

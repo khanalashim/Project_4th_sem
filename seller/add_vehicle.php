@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/addvehicle.css">
     <style>
         .bxs-star {
             color: #d1b56a;
@@ -83,7 +83,7 @@ if ($conn->connect_error) {
 
             <div class="vehicle">
                 <div class="nav_search">
-                    <div class="search">
+                    <!-- <div class="search">
                         <input id="search" type="text" placeholder="Search...">
                         <a href="#">
                             <div class="search_icon">
@@ -91,7 +91,7 @@ if ($conn->connect_error) {
 
                             </div>
                         </a>
-                    </div>
+                    </div> -->
 
 
 
@@ -112,19 +112,54 @@ if ($conn->connect_error) {
 
                 <h1>Add Vehicles /</h1>
                 <div class="vehicle_info">
-                    <?php
-                    $query = "SELECT * FROM vehicles";
-                    $result = $conn->query($query);
+                    <div class="vehicle_container">
+                        <form action="" method="post">
+                            <div class="first_add">
+                                <div class="veh_name">
+                                    <label for="">Vehicle Name</label><br>
+                                    <input type="text" placeholder="Enter Vehicle Name">
+                                </div>
 
-                    if ($result->num_rows > 0) {
+                                <div class="veh_model">
+                                    <label for="">Model</label><br>
+                                    <input type="text" placeholder="Enter Vehicle Model">
+                                </div>
+                            </div>
+                            <div class="second_add">
+                                <div class="veh_color">
+                                    <label for="">Color</label>
+                                    <input type="text" placeholder="Enter Vehicle Color">
+                                </div>
+                                <div class="veh_mileage">
+                                    <label for="">Mileage</label>
+                                    <input type="text" placeholder="Enter Vehicle Mileage">
+                                </div>
+                                <div class="veh_price">
+                                    <label for="">Price/Day</label>
+                                    <input type="text" placeholder="Enter Price/day">
+                                </div>
+                            </div>
+                            <div class="third_add">
+                                <div class="veh_km">
+                                    <label for="">KM driven</label>
+                                    <input type="number">
+                                </div>
+                                <div class="veh_reg">
+                                    <label for="">Reg. No</label>
+                                    <input type="text">
+                                </div>
+                            </div><br>
 
-                        while ($row = $result->fetch_assoc()) {
-                            $veh_id = $row['id'];
-                            echo "<div class='vehicle_container'>";
+                            <label for="">Description</label>
+                            <textarea name="" id="txt" cols="30" rows="10"></textarea><br>
 
-                            echo "</div>";
-                        }
-                    } ?>
+                            <label for="">Image</label>
+                            <input type="file">
+
+                            <button id="vehicle_add_btn" type="submit">Submit</button>
+                        </form>
+                    </div>
+
 
                 </div>
             </div>
