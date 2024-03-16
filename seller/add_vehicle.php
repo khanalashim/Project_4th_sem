@@ -113,48 +113,49 @@ if ($conn->connect_error) {
                 <h1>Add Vehicles /</h1>
                 <div class="vehicle_info">
                     <div class="vehicle_container">
-                        <form action="" method="post">
+                        <form action="vehicle_add_process.php" method="post" enctype="multipart/form-data">
                             <div class="first_add">
                                 <div class="veh_name">
                                     <label for="">Vehicle Name</label><br>
-                                    <input type="text" placeholder="Enter Vehicle Name">
+                                    <input name="veh_name" type="text" placeholder="Enter Vehicle Name">
                                 </div>
 
                                 <div class="veh_model">
                                     <label for="">Model</label><br>
-                                    <input type="text" placeholder="Enter Vehicle Model">
+                                    <input name="veh_model" type="text" placeholder="Enter Vehicle Model">
                                 </div>
                             </div>
                             <div class="second_add">
                                 <div class="veh_color">
                                     <label for="">Color</label>
-                                    <input type="text" placeholder="Enter Vehicle Color">
+                                    <input name="veh_color" type="text" placeholder="Enter Vehicle Color">
                                 </div>
                                 <div class="veh_mileage">
                                     <label for="">Mileage</label>
-                                    <input type="text" placeholder="Enter Vehicle Mileage">
+                                    <input name="veh_mileage" type="text" placeholder="Enter Vehicle Mileage">
                                 </div>
                                 <div class="veh_price">
                                     <label for="">Price/Day</label>
-                                    <input type="text" placeholder="Enter Price/day">
+                                    <input name="veh_price" type="text" placeholder="Enter Price/day">
                                 </div>
                             </div>
                             <div class="third_add">
                                 <div class="veh_km">
                                     <label for="">KM driven</label>
-                                    <input type="number">
+                                    <input name="veh_km" type="number" placeholder="Enter KM Driven">
                                 </div>
                                 <div class="veh_reg">
                                     <label for="">Reg. No</label>
-                                    <input type="text">
+                                    <input name="veh_reg" type="text" placeholder="Enter vehicle's Registration No.">
                                 </div>
                             </div><br>
 
                             <label for="">Description</label>
-                            <textarea name="" id="txt" cols="30" rows="10"></textarea><br>
+                            <textarea name="txt" id="txt" cols="25" rows="8"
+                                placeholder="Describe your Vehicle's Information in Detail..."></textarea><br>
 
                             <label for="">Image</label>
-                            <input type="file">
+                            <input name="veh_img" type="file" accept="image/*">
 
                             <button id="vehicle_add_btn" type="submit">Submit</button>
                         </form>

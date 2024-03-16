@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/trackvehicle.css">
     <style>
         .bxs-star {
             color: #d1b56a;
@@ -65,6 +65,7 @@ if ($conn->connect_error) {
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
+                            $user_available = true;
                         } else {
                             echo "Login";
                         } ?>
@@ -112,19 +113,51 @@ if ($conn->connect_error) {
 
                 <h1>Track Vehicles /</h1>
                 <div class="vehicle_info">
-                    <?php
-                    $query = "SELECT * FROM vehicles";
-                    $result = $conn->query($query);
+                    <table class='table'>
+                        <thead class='table-light'>
+                            <tr>
+                                <td>S.N</td>
+                                <td>Vehicle</td>
+                                <td>Name</td>
+                                <td>Model</td>
+                                <td>Price</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $user_id = 0;
+                            if (isset($_SESSION["Seller_id"])) {
+                                $seller_id = $_SESSION["Seller_id"];
 
-                    if ($result->num_rows > 0) {
+                            } else {
+                                echo "Login/Register First";
+                            }
+                            $query = "SELECT * FROM vehicles WHERE seller_id='$seller_id'";
+                            $result = $conn->query($query);
 
-                        while ($row = $result->fetch_assoc()) {
-                            $veh_id = $row['id'];
-                            echo "<div class='vehicle_container'>";
+                            if ($result->num_rows > 0) {
 
-                            echo "</div>";
-                        }
-                    } ?>
+                                while ($row = $result->fetch_assoc()) {
+                                    $id = $row['seller_id'];
+                                    echo "<tr>";
+                                    echo "<td>" . $row['id'] . "</td>";
+                                    echo "<td> <img height='89px' width='120px' src='../sahafront/sahaback/" . $row['img'] . "'></td>";
+                                    echo "<td>" . $row['vehiclename'] . "</td>";
+                                    echo "<td>" . $row['model'] . "</td>";
+                                    echo "<td>" . $row['price'] . "</td>";
+                                    if ($user_available == true) {
+                                        echo "<td id='action'><a href='vehicledel.php?delete_id=$id'><button>Delete</button></a>";
+                                        echo "<a href='vehicleedit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                    } else {
+                                        echo "<td id='action'><a href='login.php'><button>Delete</button></a>";
+                                        echo "<a href='login.php'><button> Edit</button></a></td>";
+                                    }
+                                    echo "</tr>";
+                                }
+                            } ?>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>
