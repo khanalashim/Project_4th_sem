@@ -10,7 +10,7 @@
     height: 60vh;
     flex-shrink: 0;
     padding: 20px;
-    color: #ffffff;
+    /* color: #ffffff; */
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
     font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;

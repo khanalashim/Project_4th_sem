@@ -8,23 +8,25 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 session_start();
 
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_SESSION["User_id"])) {
+    if (isset ($_SESSION["User_id"])) {
         $user_id = $_SESSION["User_id"];
     } else {
         $user_id = 0;
     }
 
-    if (isset($_SESSION["Seller_id"])) {
+    if (isset ($_SESSION["Seller_id"])) {
         $seller_id = $_SESSION["Seller_id"];
     } else {
         $seller_id = 0;
     }
-
+    $edit = $_GET['edit'];
+    $edit_id = $_GET['edit_id'];
     $veh_name = $_POST['veh_name'];
     $veh_model = $_POST['veh_model'];
     $veh_color = $_POST['veh_color'];
@@ -57,6 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                 move_uploaded_file($filetemp, $filedestination);
                 // Insert data into the database
+
                 $query1 = "INSERT INTO vehicles (user_id,seller_id,img, vehiclename, model,color,mileage,price,km,registration,description) VALUES ('$user_id','$seller_id','$newfiledestination', '$veh_name', '$veh_model', '$veh_color', '$veh_mileage','$veh_price','$veh_km','$veh_reg','$txt')";
 
                 $result1 = $conn->query($query1);
@@ -67,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     echo "Error: " . $query1 . "<br>" . $conn->error;
                 }
                 echo 'File uploaded Successfully';
+
             } else {
                 echo 'file Too Big';
             }

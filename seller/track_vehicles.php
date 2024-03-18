@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -57,17 +57,18 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                             $user_available = true;
                         } else {
                             echo "Login";
+                            $user_available = false;
                         } ?>
                     </li>
                 </a>
@@ -97,7 +98,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["Seller_firstname"])) {
+                        <?php if (isset ($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
@@ -127,11 +128,12 @@ if ($conn->connect_error) {
                         <tbody>
                             <?php
                             $user_id = 0;
-                            if (isset($_SESSION["Seller_id"])) {
+                            if (isset ($_SESSION["Seller_id"])) {
                                 $seller_id = $_SESSION["Seller_id"];
 
                             } else {
                                 echo "Login/Register First";
+                                $seller_id = 0;
                             }
                             $query = "SELECT * FROM vehicles WHERE seller_id='$seller_id'";
                             $result = $conn->query($query);
@@ -140,6 +142,7 @@ if ($conn->connect_error) {
 
                                 while ($row = $result->fetch_assoc()) {
                                     $id = $row['seller_id'];
+                                    $v_id = $row['id'];
                                     echo "<tr>";
                                     echo "<td>" . $row['id'] . "</td>";
                                     echo "<td> <img height='89px' width='120px' src='../sahafront/sahaback/" . $row['img'] . "'></td>";
@@ -147,8 +150,8 @@ if ($conn->connect_error) {
                                     echo "<td>" . $row['model'] . "</td>";
                                     echo "<td>" . $row['price'] . "</td>";
                                     if ($user_available == true) {
-                                        echo "<td id='action'><a href='vehicledel.php?delete_id=$id'><button>Delete</button></a>";
-                                        echo "<a href='vehicleedit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                        echo "<td id='action'><a href='vehicledel.php?delete_id=$v_id'><button>Delete</button></a>";
+                                        echo "<a href='vehicleedit.php?edit_id=$v_id'><button> Edit</button></a></td>";
                                     } else {
                                         echo "<td id='action'><a href='login.php'><button>Delete</button></a>";
                                         echo "<a href='login.php'><button> Edit</button></a></td>";

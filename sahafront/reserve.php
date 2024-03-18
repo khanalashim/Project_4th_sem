@@ -33,13 +33,13 @@ session_start();
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Services</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "sahaback/login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -64,7 +64,7 @@ session_start();
                         </a>
                     </div>
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php if (isset ($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
                         } else {
@@ -86,6 +86,7 @@ session_start();
                     if ($result->num_rows > 0) {
 
                         while ($row = $result->fetch_assoc()) {
+                            $seller_id = $row['seller_id'];
                             echo "<div class='reserve_info'>";
                             echo "<img id='reserve_img' height='320px' width='430px' src='sahaback/" . $row['img'] . "' alt='img here'>";
                             echo "<h2> Name: " . $row['vehiclename'] . " - " . $row['model'] . "<h2>";
@@ -96,16 +97,16 @@ session_start();
                             echo "</div>";
                             echo "<div class='reserve_desp'>";
                             echo "<div id='desp'><h3>Description</h3>";
-                            echo "<p> The bike is very good condition </p></div>";
+                            echo "<p>" . $row['description'] . "</p></div>";
                             echo "</div>";
                         }
                     } ?>
 
                     <div class='sidepanel'>
                         <h1>Fill the Information</h1>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             $user_available = true;
-                            if (isset($_SESSION["User_id"])) {
+                            if (isset ($_SESSION["User_id"])) {
                                 // User is logged in, so echo the id
                                 $user_id = $_SESSION["User_id"];
                             } else {
@@ -127,7 +128,7 @@ session_start();
                         <form action="<?php
                         if ($user_available == true) {
                             if ($user_verify == 1) {
-                                echo "bookvehicle.php?veh_id=" . $veh_id;
+                                echo "bookvehicle.php?veh_id=" . $veh_id . "&seller_id=" . $seller_id;
                             } else {
                                 echo "services.php";
 

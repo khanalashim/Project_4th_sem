@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -42,7 +42,7 @@ if ($conn->connect_error) {
             </h1>
             <ul>
                 <a href="dashboard.php">
-                    <li id="active"><i class='bx bx-home'></i>Dashboard</li>
+                    <li><i class='bx bx-home'></i>Dashboard</li>
                 </a>
                 <a href="add_vehicle.php">
                     <li><i class='bx bx-task'></i>Add Vehicles</li>
@@ -54,15 +54,15 @@ if ($conn->connect_error) {
                     <li><i class='bx bxs-package'></i>Booked Vehicles</li>
                 </a>
                 <a href="verification.php">
-                    <li><i class='bx bxs-package'></i>Verification</li>
+                    <li id="active"><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -95,7 +95,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["Seller_firstname"])) {
+                        <?php if (isset ($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {

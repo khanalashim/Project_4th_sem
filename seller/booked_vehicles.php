@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -27,6 +27,7 @@ if ($conn->connect_error) {
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/booked_vehicles.css">
     <style>
         .bxs-star {
             color: #d1b56a;
@@ -56,16 +57,18 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
+                            $user_available = true;
                         } else {
                             echo "Login";
+                            $user_available = false;
                         } ?>
                     </li>
                 </a>
@@ -95,7 +98,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["Seller_firstname"])) {
+                        <?php if (isset ($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
@@ -111,19 +114,59 @@ if ($conn->connect_error) {
 
                 <h1>Booked Vehicles /</h1>
                 <div class="vehicle_info">
-                    <?php
-                    $query = "SELECT * FROM vehicles";
-                    $result = $conn->query($query);
+                    <table class='table'>
+                        <thead class='table-light'>
+                            <tr>
+                                <td>S.N</td>
+                                <td>Vehicle</td>
+                                <td>Name</td>
+                                <td>From</td>
+                                <td>To</td>
+                                <td>Client Name</td>
+                                <td>Email</td>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $user_id = 0;
+                            if (isset ($_SESSION["Seller_id"])) {
+                                $seller_id = $_SESSION["Seller_id"];
+                            } else {
+                                echo "Login/Register First";
+                            }
+                            $query = "SELECT * FROM bookings WHERE seller_id='$seller_id'";
+                            $result = $conn->query($query);
 
-                    if ($result->num_rows > 0) {
+                            if ($result->num_rows > 0) {
 
-                        while ($row = $result->fetch_assoc()) {
-                            $veh_id = $row['id'];
-                            echo "<div class='vehicle_container'>";
+                                while ($row = $result->fetch_assoc()) {
+                                    $id = $row['id'];
+                                    if ($row['status'] == 'f') {
+                                        continue;
+                                    } else {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td> <img height='89px' width='120px' src='../sahafront/sahaback/" . $row['vehicleimg'] . "'></td>";
+                                        echo "<td>" . $row['vehiclename'] . "</td>";
+                                        echo "<td>" . $row['fromdate'] . "</td>";
+                                        echo "<td>" . $row['todate'] . "</td>";
+                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>" . $row['email'] . "</td>";
+                                        if ($user_available == true) {
+                                            echo "<td id='action'><a href='message.php'><button>Message</button></a>";
+                                        } else {
+                                            echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
+                                            echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";
 
-                            echo "</div>";
-                        }
-                    } ?>
+                                        }
+                                        echo "</tr>";
+                                    }
+
+                                }
+                            } ?>
+                        </tbody>
+                    </table>
 
                 </div>
             </div>

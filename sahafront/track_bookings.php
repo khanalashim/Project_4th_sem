@@ -33,7 +33,7 @@ session_start();
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                     $user_available = true;
                 } else {
@@ -41,7 +41,7 @@ session_start();
                     $user_available = false;
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -73,7 +73,7 @@ session_start();
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php if (isset ($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
                         } else {
@@ -103,7 +103,7 @@ session_start();
                         <tbody>
                             <?php
                             $user_id = 0;
-                            if (isset($_SESSION["User_id"])) {
+                            if (isset ($_SESSION["User_id"])) {
                                 $user_id = $_SESSION["User_id"];
                             } else {
                                 echo "Login/Register First";

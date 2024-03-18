@@ -9,22 +9,23 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 $id = $_GET['delete_id'];
 
-$query1 = "SELECT * FROM vehicles Where seller_id=$id";
+$query1 = "SELECT * FROM vehicles Where id=$id";
 $result1 = $conn->query($query1);
 while ($row = $result1->fetch_assoc()) {
-    if (unlink($row['img'])) {
+    $imagePath = '../sahafront/sahaback/' . $row['img'];
+    if (unlink($imagePath)) {
         echo 'The file is deleted';
     } else {
         echo 'There was an error';
     }
 }
-$query = "DELETE FROM vehicles Where id=$id";
+$query = "DELETE FROM vehicles Where seller_id=$id";
 $result = $conn->query($query);
 
 
-header('location: vehicle.php');
+header('location: track_vehicles.php');
 ?>
