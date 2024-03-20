@@ -1,0 +1,45 @@
+.total_vehicles{
+    width: 70%;
+    height: 100px;
+    text-align: center;
+    box-shadow: 0px 0px 6px 0px gray;
+    border-radius: 12px;
+}
+.total_sells{
+    width: 70%;
+    height: 100px;
+    text-align: center;
+    box-shadow: 0px 0px 6px 0px gray;
+    border-radius: 12px;
+}
+.total_earning{
+    width: 70%;
+    height: 100px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0px 0px 6px 0px gray;
+}
+.total_categories{
+    width: 70%;
+    height: 100px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 0px 6px 0px gray;
+}
+.total_vehicles h2, .total_sells h2, .total_earning h2, .total_categories h2{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #404145;
+}
+.vehicle_container{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.vehicle_info{
+    display: block;
+    height: 380px;
+    
+
+}

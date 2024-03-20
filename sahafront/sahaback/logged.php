@@ -9,7 +9,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["loggedin"] = true;
 
             echo $_SESSION["User_firstname"], $_SESSION["User_lastname"], $_SESSION["User_email"];
-            header('location: ../index.php');
+            header('location: ../dashboard.php');
         } else {
             echo "Error! User Doesnot exist";
         }

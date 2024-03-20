@@ -27,7 +27,7 @@ if ($conn->connect_error) {
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/verification.css">
+    <link rel="stylesheet" href="style/profile.css">
     <style>
         .bxs-star {
             color: #d1b56a;
@@ -55,14 +55,15 @@ if ($conn->connect_error) {
                     <li><i class='bx bxs-package'></i>Booked Vehicles</li>
                 </a>
                 <a href="verification.php">
-                    <li id="active"><i class='bx bxs-package'></i>Verification</li>
+                    <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
                 <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
+                    header('location: login.php');
                 } ?>">
-                    <li><i class='bx bx-log-in'></i>
+                    <li id="active"><i class='bx bx-log-in'></i>
                         <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
@@ -83,7 +84,7 @@ if ($conn->connect_error) {
 
             <div class="vehicle">
                 <div class="nav_search">
-                    <div class="search">
+                    <!-- <div class="search">
                         <input id="search" type="text" placeholder="Search...">
                         <a href="#">
                             <div class="search_icon">
@@ -91,7 +92,7 @@ if ($conn->connect_error) {
 
                             </div>
                         </a>
-                    </div>
+                    </div> -->
 
 
 
@@ -110,55 +111,30 @@ if ($conn->connect_error) {
                     </div>
                 </div>
 
-                <h1>Verification /</h1>
+                <h1>Dashboard /</h1>
                 <div class="vehicle_info">
-                    <div class="vehicle_container">
-                        <?php
-                        $seller_id = 0;
-                        if (isset ($_SESSION["Seller_id"])) {
-                            // seller is logged in, so echo the first name
-                            $seller_id = $_SESSION['Seller_id'];
+                    <?php
+                    $seller = $_SESSION['Seller_id'];
+                    $query = "SELECT * FROM seller WHERE s_id='$seller'";
+                    $result = $conn->query($query);
+
+                    if ($result->num_rows > 0) {
+
+                        while ($row = $result->fetch_assoc()) {
+                            echo "<div class='vehicle_container'>";
+                            echo "<div id='prof_cont'><img id='frozen' src='../sahafront/vector.png'>";
+                            echo "<img id='profile' src='../sahafront/profile.jpg' anchor='frozen'>";
+                            echo "<h2 id='name'>" . $row['firstname'] . " " . $row['lastname'] . " </h2>";
+                            echo "<div class='main_prof'><div id='left_prof'><h4> ⭐Seller</h4>";
+                            echo "<i class='bx bxs-map'></i><h5>Bharatpur-11</h5>";
+                            echo "</div>";
+                            echo "<div id='right_prof'> ";
+                            echo "<div class='email_cont'><h3>Email</h3><i class='bx bxs-envelope'><span>" . $row['email'] . "</span></i></div><div class='phone_cont'><h3>Phone</h3><i class='bx bxs-phone'><span>xxxxxxxxx</span></i></div></div></div>";
+                            echo "</div>";
+                            echo "</div>";
                         }
-                        $query = "SELECT * FROM seller WHERE s_id='$seller_id'";
-                        $result = $conn->query($query);
-                        $verify_request = false;
-                        $seller_verify = 0;
-
-                        if ($result->num_rows > 0) {
-
-                            while ($row = $result->fetch_assoc()) {
-                                $verify_request = $row['verify_request'];
-                                $user_verify = $row['seller_verify'];
-                            }
-                        }
-
-                        if ($verify_request == true && $seller_verify == 0) {
-                            echo "";
-
-                            ?>
-                            <img height="140px" width="160px" src="pending1.gif" alt="pending" srcset="">
-                            <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
-                                id="pending">Your Request Pending...</h2>
-                            <?php
-                        } elseif ($seller_verify == 1) { ?>
-                            <img height="140px" width="160px" src="success.gif" alt="success" srcset="">
-                            <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
-                                id="pending">You Are Successfully Verified</h2>
-                        <?php } else { ?>
-                            <form action="verify.php?seller_id=<?php if (isset ($_SESSION['Seller_id'])) {
-                                echo $_SESSION['Seller_id'];
-                            } ?>" method="post" enctype="multipart/form-data">
-                                <label id="head" for="">Verification</label><br>
-                                <label for="">Front face Nationality ID</label>
-                                <input name="front_img" type="file" accept="image/*" required>
-
-                                <label for="">Back face Nationality ID</label>
-                                <input name="back_img" type="file" accept="image/*" required>
-                                <button id="verify" type="submit">Verify</button>
-                            </form>
-                        <?php } ?>
-                    </div>
-
+                    } ?>
+                    s
                 </div>
             </div>
         </div>

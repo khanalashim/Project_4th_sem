@@ -32,13 +32,13 @@ session_start();
                 <a href="services.php">
                     <li id="active"><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "sahaback/login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -67,7 +67,7 @@ session_start();
                         </a>
                     </div>
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php if (isset ($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
                         } else {
@@ -85,7 +85,7 @@ session_start();
                     <div class="vehicle_container">
                         <?php
                         $user_id = 0;
-                        if (isset($_SESSION["User_id"])) {
+                        if (isset ($_SESSION["User_id"])) {
                             // User is logged in, so echo the first name
                             $user_id = $_SESSION['User_id'];
                         }
@@ -115,7 +115,7 @@ session_start();
                             <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
                                 id="pending">You Are Successfully Verified</h2>
                         <?php } else { ?>
-                            <form action="verify.php?user_id=<?php if (isset($_SESSION['User_id'])) {
+                            <form action="verify.php?user_id=<?php if (isset ($_SESSION['User_id'])) {
                                 echo $_SESSION['User_id'];
                             } ?>" method="post" enctype="multipart/form-data">
                                 <label id="head" for="">Verification</label><br>

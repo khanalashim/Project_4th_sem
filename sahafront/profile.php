@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -54,13 +54,13 @@ if ($conn->connect_error) {
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "sahaback/login.php";
                 } ?>">
                     <li id="active"><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -93,7 +93,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["User_firstname"])) {
+                        <?php if (isset ($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
                         } else {
