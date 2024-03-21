@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($email == "admin@gmail.com" and $password == "9821") {
         $_SESSION["Admin_id"] = 0;
-        header("location: index.php");
+        header("location: dashboard.php");
     } else {
 
         $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["loggedin"] = true;
 
             echo $_SESSION["User_firstname"], $_SESSION["User_lastname"], $_SESSION["User_email"];
-            header('location: ../dashboard.php');
+            header('location: index.php');
         } else {
             echo "Error! User Doesnot exist";
         }

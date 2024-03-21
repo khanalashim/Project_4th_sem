@@ -91,7 +91,7 @@ if ($conn->connect_error) {
                 <h1>Dashboard /</h1>
                 <div class="vehicle_info">
                     <?php
-                    $id = $_SESSION['Seller_id'];
+
                     $query = "SELECT * FROM vehicles";
                     $result = $conn->query($query);
                     $count_v = 0;
@@ -142,7 +142,7 @@ if ($conn->connect_error) {
                     echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }                                                                                                                                                                       ?>
+                    // }                                                                                                                                                                                             ?>
 
                 </div>
             </div>

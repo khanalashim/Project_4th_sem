@@ -15,7 +15,7 @@ if ($ok === 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
-    <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/users.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -75,57 +75,58 @@ if ($ok === 0) {
 
                 <h1>Dashboard /</h1>
                 <div class="vehicle_info">
+                    <div class='vehicle_container'>
 
 
 
+                        <table class="table">
+                            <thead>
+                                <th scope="col">Id</th>
+                                <th scope=" col">Firstname</th>
+                                <th scope=" col">Lastname</th>
+                                <th scope=" col">Email</th>
+                                <th scope=" col">Profile</th>
 
-                    <table class="table">
-                        <thead>
-                            <th scope="col">Id</th>
-                            <th scope=" col">Firstname</th>
-                            <th scope=" col">Lastname</th>
-                            <th scope=" col">Email</th>
-                            <th scope=" col">Profile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $database = "mydb";
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "mydb";
-
-                            // Create connection
-                            $conn = new mysqli($servername, $username, $password, $database);
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die ("Connection failed: " . $conn->connect_error);
-                            }
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $database);
+                                // Check connection
+                                if ($conn->connect_error) {
+                                    die ("Connection failed: " . $conn->connect_error);
+                                }
 
 
-                            $query = "SELECT * FROM users";
-                            $result = $conn->query($query);
+                                $query = "SELECT * FROM users";
+                                $result = $conn->query($query);
 
-                            if ($result->num_rows > 0) {
+                                if ($result->num_rows > 0) {
 
-                                while ($row = $result->fetch_assoc()) {
-                                    $id = $row['id'];
-                                    echo "<tr><th scope='row'>" . $id . "</th>";
-                                    echo "<td>" . $row['firstname'] . "</td>";
-                                    echo "<td>" . $row['lastname'] . "</td>";
-                                    echo "<td>" . $row['email'] . "</td>";
-                                    // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
-                                    echo "<td><a href='del.php?delete_id=$id'><button>Delete</button></a>";
-                                    echo "<a href='edit.php?edit_id=$id'><button>Edit</button></a> </td></tr>";
+                                    while ($row = $result->fetch_assoc()) {
+                                        $id = $row['id'];
+                                        echo "<tr><th scope='row'>" . $id . "</th>";
+                                        echo "<td>" . $row['firstname'] . "</td>";
+                                        echo "<td>" . $row['lastname'] . "</td>";
+                                        echo "<td>" . $row['email'] . "</td>";
+                                        // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
+                                        echo "<td><a href='del.php?delete_id=$id'><button>Delete</button></a>";
+                                        echo "<a href='edit.php?edit_id=$id'><button>Edit</button></a> </td></tr>";
+
+                                    }
 
                                 }
 
-                            }
-
-                            ?>
-                        </tbody>
-                    </table>
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

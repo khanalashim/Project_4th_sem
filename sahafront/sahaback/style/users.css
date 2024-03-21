@@ -1,0 +1,61 @@
+
+.table{
+    width: 100%;
+    border: 0px solid gray;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+.table-light{
+    background-color: #00308F;
+    height: 67px;
+    color: white;
+    margin: 0;
+    
+}
+.vehicle_info{
+    display: block;
+    /* grid-template-columns: auto auto auto;
+    height: 100vh; */
+    gap: 10px; /* Adjust gap between vehicles as needed */
+    background-color: white;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.vehicle_container{
+    margin-left: auto;
+    margin-right: auto;
+    width: 97%;
+    display: block;
+    height: 280px;
+    cursor: pointer;
+    padding: 39px 8px;
+    border-radius: 8px;
+    margin-top: 12px;
+    border: none;
+}
+#action{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid ;
+    cursor: pointer;
+    font-weight: 600;
+}
+td button{
+    text-align: center;
+    color: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid ;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #04aa6d;
+}
