@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["loggedin"] = true;
 
             echo $_SESSION["User_firstname"], $_SESSION["User_lastname"], $_SESSION["User_email"];
-            header('location: index.php');
+            header('location: ../index.php');
         } else {
             echo "Error! User Doesnot exist";
         }

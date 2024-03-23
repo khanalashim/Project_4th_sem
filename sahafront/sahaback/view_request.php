@@ -40,8 +40,8 @@ if ($ok === 0) {
                 <a href="verify_request.php">
                     <li id="active"><i class='bx bxs-package'></i>Verify Users</li>
                 </a>
-                <a href="verification.php">
-                    <li><i class='bx bxs-package'></i>Verification</li>
+                <a href="bookings.php">
+                    <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -117,9 +117,9 @@ if ($ok === 0) {
                                 while ($row = $result1->fetch_assoc()) {
                                     $_SESSION['front_img'] = $row['front_img'];
                                     $_SESSION['back_img'] = $row['back_img'];
-                                    echo "<div class='request_img'><img id='front' height='265px' width='305px' src='" . $row['front_img'] . "'>";
-                                    echo "<img id='back' height='265px' width='305px' src='" . $row['back_img'] . "'>";
-                                    echo "<a href='request_process.php?user_id=$user_id'><button id='request_btn'>Accept Request</button></div></a>";
+                                    echo "<div class='request_img'><img id='front' src='" . $row['front_img'] . "'>";
+                                    echo "<img id='back' src='" . $row['back_img'] . "'>";
+                                    echo "<a href='request_process.php?user_id=$user_id'><button id='request_btn'>Accept Request</button><a href='remove_request.php'><button id='remove_btn'>Remove</button></a></div></a>";
                                 }
                             }
                             echo "</div>";

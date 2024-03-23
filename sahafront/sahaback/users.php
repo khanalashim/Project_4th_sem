@@ -39,8 +39,8 @@ if ($ok === 0) {
                 <a href="verify_request.php">
                     <li><i class='bx bxs-package'></i>Verify Users</li>
                 </a>
-                <a href="verification.php">
-                    <li><i class='bx bxs-package'></i>Verification</li>
+                <a href="bookings.php">
+                    <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
             </ul>
             <!-- <div class="seller">

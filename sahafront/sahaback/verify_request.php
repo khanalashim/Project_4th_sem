@@ -16,6 +16,8 @@ if ($ok === 0) {
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/dashboard.css">
+    <link rel="stylesheet" href="style/users.css">
+    <link rel="stylesheet" href="style/vehicle.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -39,8 +41,8 @@ if ($ok === 0) {
                 <a href="verify_request.php">
                     <li id="active"><i class='bx bxs-package'></i>Verify Users</li>
                 </a>
-                <a href="verification.php">
-                    <li><i class='bx bxs-package'></i>Verification</li>
+                <a href="bookings.php">
+                    <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -75,58 +77,63 @@ if ($ok === 0) {
 
                 <h1>Dashboard /</h1>
                 <div class="vehicle_info">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Id</th>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Front Face</th>
-                                <th scope="col">Back Face</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $database = "mydb";
+                    <div class='vehicle_container'>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Front Face</th>
+                                    <th scope="col">Back Face</th>
+                                    <th scope="col">Action</th>
 
-                            // Create connection
-                            $conn = new mysqli($servername, $username, $password, $database);
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die ("Connection failed: " . $conn->connect_error);
-                            }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "";
+                                $database = "mydb";
+
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $database);
+                                // Check connection
+                                if ($conn->connect_error) {
+                                    die ("Connection failed: " . $conn->connect_error);
+                                }
 
 
-                            $query = "SELECT * FROM verification";
-                            $result = $conn->query($query);
+                                $query = "SELECT * FROM verification";
+                                $result = $conn->query($query);
 
-                            if ($result->num_rows > 0) {
+                                if ($result->num_rows > 0) {
 
-                                while ($row = $result->fetch_assoc()) {
-                                    $id = $row['v_id'];
-                                    $user_id = $row['user_id'];
-                                    echo "<tr><th scope='row'>" . $id . "</th>";
-                                    echo "<td>" . $row['user_id'] . "</td>";
-                                    echo "<td><img height='65px' width='65px' src='" . $row['front_img'] . "'></td>";
-                                    echo "<td><img height='65px' width='65px' src='" . $row['back_img'] . "'></td>";
-                                    // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
-                                    echo "<td><a href='view_request.php?user_id=$user_id'><button>View</button></a>";
-                                    echo "<a href='remove_request.php'><button>Remove</button></a> </td></tr>";
+                                    while ($row = $result->fetch_assoc()) {
+                                        $id = $row['v_id'];
+                                        $user_id = $row['user_id'];
+                                        echo "<tr><th scope='row'>" . $id . "</th>";
+                                        echo "<td>" . $row['user_id'] . "</td>";
+                                        echo "<td><img height='65px' width='65px' src='" . $row['front_img'] . "'></td>";
+                                        echo "<td><img height='65px' width='65px' src='" . $row['back_img'] . "'></td>";
+                                        // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
+                                        echo "<td><a href='view_request.php?user_id=$user_id'><button>View</button></a>";
+                                        echo "<a href='remove_request.php'><button>Remove</button></a> </td></tr>";
+
+                                    }
 
                                 }
 
-                            }
-
-                            ?>
-                        </tbody>
-                    </table>
-                    </a>
+                                ?>
+                            </tbody>
+                        </table>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </body>

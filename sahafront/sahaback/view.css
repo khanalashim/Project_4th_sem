@@ -106,14 +106,33 @@ h5{
 }
 #front{
     margin-left: 95px;
+    width: 80%;
+    margin-top: 56px;
 }
 #back{
-    margin-left: 56px;
+    margin-left: 95px;
+    width: 80%;
+    margin-bottom: 34px;
 }
 #request_btn{
     margin-left: 13%;
+    margin-bottom: 45px;
     text-align: center;
     background-color: #00308F;
+    color: white;
+    padding: 18px 24px;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid ;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+#remove_btn{
+    margin-left: 13%;
+    margin-bottom: 45px;
+    text-align: center;
+    background-color: #a22f16;
     color: white;
     padding: 18px 24px;
     border-radius: 10px;
