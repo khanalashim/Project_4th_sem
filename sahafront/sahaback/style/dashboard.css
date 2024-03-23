@@ -37,6 +37,13 @@
     margin-left: auto;
     margin-right: auto;
 }
+.vehicle_container h1{
+    color: black;
+    /* color: #404145a2; */
+}
+.vehicle_container h2{
+    color: #04aa6d;
+}
 .vehicle_info{
     display: block;
     height: 380px;

@@ -50,6 +50,9 @@
                 <a href="bookings.php">
                     <li id="active"><i class='bx bxs-package'></i>Bookings</li>
                 </a>
+                <a href="booked_vehicles.php">
+                    <li><i class='bx bxs-package'></i>Booked</li>
+                </a>
             </ul>
             <!-- <div class="seller">
                 <h1><i class='bx bx-money-withdraw'></i>Become a Buyer</h1>
@@ -113,6 +116,8 @@
                                     <td scope="col">Name</td>
                                     <td scope="col">From</td>
                                     <td scope="col">To</td>
+                                    <td scope="col">Customer</td>
+                                    <td scope="col">Seller id</td>
                                     <td scope="col">Action</td>
                                 </tr>
                             </thead>
@@ -134,7 +139,8 @@
                                             echo "<td>" . $row['vehiclename'] . "</td>";
                                             echo "<td>" . $row['fromdate'] . "</td>";
                                             echo "<td>" . $row['todate'] . "</td>";
-
+                                            echo "<td>" . $row['name'] . "</td>";
+                                            echo "<td>" . $row['seller_id'] . "</td>";
                                             echo "<td id='action'><a href='../booking_delete.php?delete_id=$id'><button>Delete</button></a>";
                                             echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
                                             echo "</tr>";

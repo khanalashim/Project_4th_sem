@@ -155,6 +155,7 @@ if ($conn->connect_error) {
                                         echo "<td>" . $row['email'] . "</td>";
                                         if ($user_available == true) {
                                             echo "<td id='action'><a href='message.php'><button>Message</button></a>";
+                                            echo "<td id='action'><a href='accept.php'><button>Accept</button></a>";
                                         } else {
                                             echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
                                             echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";

@@ -42,6 +42,9 @@ if ($ok === 0) {
                 <a href="bookings.php">
                     <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
+                <a href="booked_vehicles.php">
+                    <li><i class='bx bxs-package'></i>Booked</li>
+                </a>
             </ul>
             <!-- <div class="seller">
                 <h1><i class='bx bx-money-withdraw'></i>Become a Buyer</h1>

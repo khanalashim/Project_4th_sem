@@ -57,6 +57,9 @@ if ($conn->connect_error) {
                 <a href="bookings.php">
                     <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
+                <a href="booked_vehicles.php">
+                    <li><i class='bx bxs-package'></i>Booked</li>
+                </a>
             </ul>
             <!-- <div class="seller">
                 <h1><i class='bx bx-money-withdraw'></i>Become a Buyer</h1>
@@ -142,7 +145,7 @@ if ($conn->connect_error) {
                     echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }                                                                                                                                                                                                  ?>
+                    // }                                                                                                                                                                                                            ?>
 
                 </div>
             </div>
