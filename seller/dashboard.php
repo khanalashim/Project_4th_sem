@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    die ("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -57,14 +57,14 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                     header('location: login.php');
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -97,7 +97,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset($_SESSION["Seller_firstname"])) {
+                        <?php if (isset ($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
@@ -154,7 +154,7 @@ if ($conn->connect_error) {
                     echo "<div class='total_categories'><h1><i class='bx bxs-duplicate'></i>Total Categories</h1><h2>" . $category . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }              ?>
+                    // }                ?>
 
                 </div>
             </div>

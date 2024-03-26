@@ -19,7 +19,6 @@
     <link rel="stylesheet" href="style/users.css">
     <link rel="stylesheet" href="style/vehicle.css">
     <link rel="stylesheet" href="style/bookings.css">
-    <link rel="stylesheet" href="../style/booking_history.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -52,10 +51,10 @@
                     <li><i class='bx bxs-package'></i>Bookings</li>
                 </a>
                 <a href="booked_vehicles.php">
-                    <li id="active"><i class='bx bxs-package'></i>Booked</li>
+                    <li><i class='bx bxs-package'></i>Booked</li>
                 </a>
                 <a href="sellers.php">
-                    <li><i class='bx bxs-package'></i>Sellers</li>
+                    <li id="active"><i class='bx bxs-package'></i>Sellers</li>
                 </a>
                 <a href="verify_seller.php">
                     <li><i class='bx bxs-package'></i>Verify Seller</li>
@@ -118,59 +117,37 @@
                         <table class='table'>
                             <thead>
                                 <tr>
-                                    <td>S.N</td>
-                                    <td>Vehicle</td>
-                                    <td>Name</td>
-                                    <td>From</td>
-                                    <td>To</td>
-                                    <td>Status</td>
+                                    <td scope="col">S.N</td>
+                                    <td scope="col">Firstname</td>
+                                    <td scope="col">Lastname</td>
+                                    <td scope="col">Email</td>
+                                    <td scope="col">Action</td>
+
+
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-
-                                $query = "SELECT * FROM bookings";
+                                $query = "SELECT * FROM seller";
                                 $result = $conn->query($query);
 
                                 if ($result->num_rows > 0) {
 
                                     while ($row = $result->fetch_assoc()) {
-                                        $id = $row['id'];
-                                        $veh_id = $row['vehicleid'];
-                                        $query2 = "SELECT * FROM vehicles WHERE id='$veh_id'";
-                                        $result2 = $conn->query($query2);
-                                        if ($result2->num_rows > 0) {
-
-                                            while ($row2 = $result2->fetch_assoc()) {
-                                                $seller_id = $row2['seller_id'];
-
-                                            }
-                                        }
-                                        $veh_name = $row['vehiclename'];
-                                        $veh_price = $row['vehicleprice'];
-                                        $veh_model = $row['vehiclemodel'];
-                                        $veh_img = $row['vehicleimg'];
+                                        $id = $row['s_id'];
 
                                         echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td> <img height='89px' width='120px' src='" . $row['vehicleimg'] . "'></td>";
-                                        echo "<td>" . $row['vehiclename'] . "</td>";
-                                        echo "<td>" . $row['fromdate'] . "</td>";
-                                        echo "<td>" . $row['todate'] . "</td>";
-                                        if ($row['status'] == 'c') {
-                                            echo "<td id='action_c'>Completed</td>";
-                                            $query1 = "INSERT INTO booked (user_id, seller_id, veh_id, veh_name, veh_price, veh_model, veh_img) VALUES ('$id','$seller_id','$veh_id','$veh_name','$veh_price','$veh_model','$veh_img')";
-                                            $result1 = $conn->query($query1);
-                                        } elseif ($row['status'] == 'p') {
-                                            echo "<td id='action_p'>Pending</td>";
-                                        } elseif ($row['status'] == 'f') {
-                                            echo "<td id='action_f'>Failed</td>";
-                                        }
-
+                                        echo "<td>" . $row['s_id'] . "</td>";
+                                        echo "<td>" . $row['firstname'] . "</td>";
+                                        echo "<td>" . $row['lastname'] . "</td>";
+                                        echo "<td>" . $row['email'] . "</td>";
+                                        echo "<td id='action'><a href='seller_del.php?delete_id=$id'><button>Delete</button></a>";
+                                        echo "<a href='seller_edit.php?edit_id=$id'><button> Edit</button></a></td>";
                                         echo "</tr>";
-
                                     }
-                                } ?>
+
+                                }
+                                ?>
                             </tbody>
                         </table>
                     </div>

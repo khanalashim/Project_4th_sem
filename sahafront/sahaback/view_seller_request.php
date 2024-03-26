@@ -38,7 +38,7 @@ if ($ok === 0) {
                     <li><i class='bx bx-list-plus'></i>Vehicles</li>
                 </a>
                 <a href="verify_request.php">
-                    <li id="active"><i class='bx bxs-package'></i>Verify Users</li>
+                    <li><i class='bx bxs-package'></i>Verify Users</li>
                 </a>
                 <a href="bookings.php">
                     <li><i class='bx bxs-package'></i>Bookings</li>
@@ -50,7 +50,7 @@ if ($ok === 0) {
                     <li><i class='bx bxs-package'></i>Sellers</li>
                 </a>
                 <a href="verify_seller.php">
-                    <li><i class='bx bxs-package'></i>Verify Seller</li>
+                    <li id="active"><i class='bx bxs-package'></i>Verify Seller</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -99,10 +99,10 @@ if ($ok === 0) {
                         die ("Connection failed: " . $conn->connect_error);
                     }
 
-                    $user_id = $_GET['user_id'];
+                    $seller_id = $_GET['seller_id'];
 
-                    $query = "SELECT * FROM users WHERE id='$user_id'";
-                    $query1 = "SELECT * FROM verification WHERE user_id='$user_id'";
+                    $query = "SELECT * FROM seller WHERE s_id='$seller_id'";
+                    $query1 = "SELECT * FROM seller_verification WHERE seller_id='$seller_id'";
 
                     $result = $conn->query($query);
                     $result1 = $conn->query($query1);
@@ -116,7 +116,7 @@ if ($ok === 0) {
                             echo "<div id='prof_cont'><img id='frozen' src='../vector.png'>";
                             echo "<img id='profile' src='../profile.jpg' anchor='frozen'>";
                             echo "<h2 id='name'>" . $row['firstname'] . " " . $row['lastname'] . " </h2>";
-                            echo "<div class='main_prof'><div id='left_prof'><h4> ⭐User</h4>";
+                            echo "<div class='main_prof'><div id='left_prof'><h4> ⭐Seller</h4>";
                             echo "<i class='bx bxs-map'></i><h5>Bharatpur-11</h5>";
                             echo "</div>";
                             echo "<div id='right_prof'> ";
@@ -124,11 +124,11 @@ if ($ok === 0) {
                             if ($result1->num_rows > 0) {
 
                                 while ($row = $result1->fetch_assoc()) {
-                                    $_SESSION['front_img'] = $row['front_img'];
-                                    $_SESSION['back_img'] = $row['back_img'];
+                                    $_SESSION['seller_front_img'] = $row['front_img'];
+                                    $_SESSION['seller_back_img'] = $row['back_img'];
                                     echo "<div class='request_img'><img id='front' src='" . $row['front_img'] . "'>";
                                     echo "<img id='back' src='" . $row['back_img'] . "'>";
-                                    echo "<a href='request_process.php?user_id=$user_id'><button id='request_btn'>Accept Request</button><a href='remove_request.php'><button id='remove_btn'>Remove</button></a></div></a>";
+                                    echo "<a href='request_process.php?seller_id=$seller_id'><button id='request_btn'>Accept Request</button><a href='remove_request.php'><button id='remove_btn'>Remove</button></a></div></a>";
                                 }
                             }
                             echo "</div>";

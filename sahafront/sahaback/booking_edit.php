@@ -53,6 +53,12 @@
                 <a href="booked_vehicles.php">
                     <li><i class='bx bxs-package'></i>Booked</li>
                 </a>
+                <a href="sellers.php">
+                    <li><i class='bx bxs-package'></i>Sellers</li>
+                </a>
+                <a href="verify_seller.php">
+                    <li><i class='bx bxs-package'></i>Verify Seller</li>
+                </a>
             </ul>
             <!-- <div class="seller">
                 <h1><i class='bx bx-money-withdraw'></i>Become a Buyer</h1>

@@ -15,7 +15,9 @@ if ($ok === 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/dashboard.css">
     <link rel="stylesheet" href="style/users.css">
+    <link rel="stylesheet" href="style/vehicle.css">
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
@@ -31,7 +33,7 @@ if ($ok === 0) {
                     <li><i class='bx bx-home'></i>Dashboard</li>
                 </a>
                 <a href="users.php">
-                    <li id="active"><i class='bx bx-task'></i>Users</li>
+                    <li><i class='bx bx-task'></i>Users</li>
                 </a>
                 <a href="vehicle.php">
                     <li><i class='bx bx-list-plus'></i>Vehicles</li>
@@ -49,7 +51,7 @@ if ($ok === 0) {
                     <li><i class='bx bxs-package'></i>Sellers</li>
                 </a>
                 <a href="verify_seller.php">
-                    <li><i class='bx bxs-package'></i>Verify Seller</li>
+                    <li id="active"><i class='bx bxs-package'></i>Verify Seller</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -85,16 +87,14 @@ if ($ok === 0) {
                 <h1>Dashboard /</h1>
                 <div class="vehicle_info">
                     <div class='vehicle_container'>
-
-
-
                         <table class="table">
                             <thead>
-                                <th scope="col">Id</th>
-                                <th scope=" col">Firstname</th>
-                                <th scope=" col">Lastname</th>
-                                <th scope=" col">Email</th>
-                                <th scope=" col">Profile</th>
+                                <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">User ID</th>
+                                    <th scope="col">Front Face</th>
+                                    <th scope="col">Back Face</th>
+                                    <th scope="col">Action</th>
 
                                 </tr>
                             </thead>
@@ -113,20 +113,21 @@ if ($ok === 0) {
                                 }
 
 
-                                $query = "SELECT * FROM users";
+                                $query = "SELECT * FROM seller_verification";
                                 $result = $conn->query($query);
 
                                 if ($result->num_rows > 0) {
 
                                     while ($row = $result->fetch_assoc()) {
-                                        $id = $row['id'];
+                                        $id = $row['seller_v_id'];
+                                        $seller_id = $row['seller_id'];
                                         echo "<tr><th scope='row'>" . $id . "</th>";
-                                        echo "<td>" . $row['firstname'] . "</td>";
-                                        echo "<td>" . $row['lastname'] . "</td>";
-                                        echo "<td>" . $row['email'] . "</td>";
+                                        echo "<td>" . $row['seller_id'] . "</td>";
+                                        echo "<td><img height='65px' width='65px' src='" . $row['front_img'] . "'></td>";
+                                        echo "<td><img height='65px' width='65px' src='" . $row['back_img'] . "'></td>";
                                         // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
-                                        echo "<td><a href='del.php?delete_id=$id'><button>Delete</button></a>";
-                                        echo "<a href='edit.php?edit_id=$id'><button>Edit</button></a> </td></tr>";
+                                        echo "<td><a href='view_seller_request.php?seller_id=$seller_id'><button>View</button></a>";
+                                        echo "<a href='remove_seller_request.php?remove_id=$seller_id'><button>Remove</button></a> </td></tr>";
 
                                     }
 
@@ -135,11 +136,13 @@ if ($ok === 0) {
                                 ?>
                             </tbody>
                         </table>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 
 </body>
