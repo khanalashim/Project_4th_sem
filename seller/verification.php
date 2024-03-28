@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -57,13 +57,13 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li id="active"><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -96,7 +96,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset ($_SESSION["Seller_firstname"])) {
+                        <?php if (isset($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
@@ -115,7 +115,7 @@ if ($conn->connect_error) {
                     <div class="vehicle_container">
                         <?php
                         $seller_id = 0;
-                        if (isset ($_SESSION["Seller_id"])) {
+                        if (isset($_SESSION["Seller_id"])) {
                             // seller is logged in, so echo the first name
                             $seller_id = $_SESSION['Seller_id'];
                         }
@@ -128,7 +128,7 @@ if ($conn->connect_error) {
 
                             while ($row = $result->fetch_assoc()) {
                                 $verify_request = $row['verify_request'];
-                                $user_verify = $row['seller_verify'];
+                                $seller_verify = $row['seller_verify'];
                             }
                         }
 
@@ -136,16 +136,16 @@ if ($conn->connect_error) {
                             echo "";
 
                             ?>
-                            <img height="140px" width="160px" src="pending1.gif" alt="pending" srcset="">
+                            <img height="140px" width="160px" src="../sahafront/pending1.gif" alt="pending" srcset="">
                             <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
                                 id="pending">Your Request Pending...</h2>
                             <?php
                         } elseif ($seller_verify == 1) { ?>
-                            <img height="140px" width="160px" src="success.gif" alt="success" srcset="">
+                            <img height="140px" width="160px" src="../sahafront/success.gif" alt="success" srcset="">
                             <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
                                 id="pending">You Are Successfully Verified</h2>
                         <?php } else { ?>
-                            <form action="verify.php?seller_id=<?php if (isset ($_SESSION['Seller_id'])) {
+                            <form action="verify.php?seller_id=<?php if (isset($_SESSION['Seller_id'])) {
                                 echo $_SESSION['Seller_id'];
                             } ?>" method="post" enctype="multipart/form-data">
                                 <label id="head" for="">Verification</label><br>

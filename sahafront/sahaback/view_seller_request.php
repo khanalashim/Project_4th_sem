@@ -96,7 +96,7 @@ if ($ok === 0) {
                     $conn = new mysqli($servername, $username, $password, $database);
                     // Check connection
                     if ($conn->connect_error) {
-                        die ("Connection failed: " . $conn->connect_error);
+                        die("Connection failed: " . $conn->connect_error);
                     }
 
                     $seller_id = $_GET['seller_id'];
@@ -128,7 +128,7 @@ if ($ok === 0) {
                                     $_SESSION['seller_back_img'] = $row['back_img'];
                                     echo "<div class='request_img'><img id='front' src='" . $row['front_img'] . "'>";
                                     echo "<img id='back' src='" . $row['back_img'] . "'>";
-                                    echo "<a href='request_process.php?seller_id=$seller_id'><button id='request_btn'>Accept Request</button><a href='remove_request.php'><button id='remove_btn'>Remove</button></a></div></a>";
+                                    echo "<a href='seller_request_process.php?seller_id=$seller_id'><button id='request_btn'>Accept Request</button><a href='remove_seller_request.php?seller_id=$seller_id'><button id='remove_btn'>Remove</button></a></div></a>";
                                 }
                             }
                             echo "</div>";

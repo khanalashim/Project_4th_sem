@@ -109,7 +109,7 @@ if ($ok === 0) {
                                 $conn = new mysqli($servername, $username, $password, $database);
                                 // Check connection
                                 if ($conn->connect_error) {
-                                    die ("Connection failed: " . $conn->connect_error);
+                                    die("Connection failed: " . $conn->connect_error);
                                 }
 
 
@@ -127,7 +127,7 @@ if ($ok === 0) {
                                         echo "<td><img height='65px' width='65px' src='" . $row['back_img'] . "'></td>";
                                         // echo "<td><img height='80px' width='68px' src='" . $row['destination'] . "'</td>";
                                         echo "<td><a href='view_seller_request.php?seller_id=$seller_id'><button>View</button></a>";
-                                        echo "<a href='remove_seller_request.php?remove_id=$seller_id'><button>Remove</button></a> </td></tr>";
+                                        echo "<a href='remove_seller_request.php?seller_id=$seller_id'><button>Remove</button></a> </td></tr>";
 
                                     }
 
