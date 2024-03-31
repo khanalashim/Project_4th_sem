@@ -26,9 +26,20 @@ while ($row = $result1->fetch_assoc()) {
 $query = "INSERT INTO bookings(user_id,seller_id,status,fromdate,todate,name,email,phone,vehicleid,vehicleimg,vehiclename,vehiclemodel,vehicleprice) VALUES ('$user_id','$seller_id','$status','$fromdate','$todate','$name','$email','$phone','$vehicleid','$vehicleimg','$vehiclename','$vehiclemodel','$vehicleprice')";
 $result = $conn->query($query);
 
+$query1 = "UPDATE vehicles SET booked='true', fromdate='$fromdate', todate='$todate', user_id='$user_id' WHERE id='$veh_id'";
+$result1 = $conn->query($query1);
+
+
+
 if ($result === TRUE) {
     header('location: index.php');
     echo "Record inserted successfully";
 } else {
     echo "Error: " . $query . "<br>" . $conn->error;
+}
+if ($result1 === TRUE) {
+    header('location: index.php');
+    echo "Record inserted successfully";
+} else {
+    echo "Error: " . $query1 . "<br>" . $conn->error;
 }

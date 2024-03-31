@@ -14,19 +14,10 @@ session_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset($_SESSION["User_id"])) {
-        $user_id = $_SESSION["User_id"];
-    } else {
-        $user_id = 0;
-    }
 
-    if (isset($_SESSION["Seller_id"])) {
-        $seller_id = $_SESSION["Seller_id"];
-    } else {
-        $seller_id = 0;
-    }
-    $edit = $_GET['edit'];
-    $edit_id = $_GET['edit_id'];
+    $user_id = 0;
+    $seller_id = 0;
+
     $veh_name = $_POST['veh_name'];
     $veh_model = $_POST['veh_model'];
     $veh_color = $_POST['veh_color'];
@@ -54,22 +45,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if ($fileerror === 0) {
             if ($filesize < 10000000) {
                 $filenewname = uniqid('', true) . '.' . $ext;
-                $filedestination = '../sahafront/sahaback/vehicleimg/' . $filenewname;
+                $filedestination = 'vehicleimg/' . $filenewname;
                 $newfiledestination = 'vehicleimg/' . $filenewname;
 
                 move_uploaded_file($filetemp, $filedestination);
                 // Insert data into the database
 
-                $query1 = "INSERT INTO vehicles (user_id,seller_id,img, vehiclename, model,color,mileage,price,km,registration,description) VALUES ('$user_id','$seller_id','$newfiledestination', '$veh_name', '$veh_model', '$veh_color', '$veh_mileage','$veh_price','$veh_km','$veh_reg','$txt')";
+                $query = "INSERT INTO vehicles (user_id, seller_id, img, vehiclename, model, color, mileage, price, km, registration, description) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                $result1 = $conn->query($query1);
+                // Prepare the statement
+                $stmt = $conn->prepare($query);
 
-                if ($result1 === TRUE) {
-                    echo "Record inserted successfully";
+                // Bind parameters to the prepared statement
+                $stmt->bind_param("iisssssssss", $user_id, $seller_id, $newfiledestination, $veh_name, $veh_model, $veh_color, $veh_mileage, $veh_price, $veh_km, $veh_reg, $txt);
+
+                // Execute the prepared statement
+                $stmt->execute();
+
+                if ($stmt->affected_rows > 0) {
+                    echo "Data inserted successfully.";
                 } else {
-                    echo "Error: " . $query1 . "<br>" . $conn->error;
+                    echo "Error: Data insertion failed.";
                 }
-                echo 'File uploaded Successfully';
+
+                $stmt->close();
 
             } else {
                 echo 'file Too Big';
@@ -83,5 +82,5 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 $conn->close();
-header('location: track_vehicles.php');
+header('location: vehicle.php');
 ?>

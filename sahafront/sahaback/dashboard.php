@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -146,12 +146,12 @@ if ($conn->connect_error) {
 
                     echo "<div class='vehicle_container'>";
                     echo "<div class='total_sells'><h1><i class='bx bxs-package'></i>Total Users</h1><h2>" . $count_u . "</h2></div>";
-                    echo "<div class='total_earning'><h1><i class='bx bx-dollar'></i>Total Sellers</h1><h2>Rs. " . $count_s . "</h2></div>";
+                    echo "<div class='total_earning'><h1><i class='bx bx-dollar'></i>Total Sellers</h1><h2> " . $count_s . "</h2></div>";
                     echo "<div class='total_categories'><h1><i class='bx bxs-duplicate'></i>Total Bookings</h1><h2>" . $bookings . "</h2></div>";
                     echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }                                                                                                                                                                                                                                   ?>
+                    // }                                                                                                                                                                                                                                      ?>
 
                 </div>
             </div>

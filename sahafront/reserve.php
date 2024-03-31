@@ -33,13 +33,13 @@ session_start();
                 <a href="services.php">
                     <li><i class='bx bxs-package'></i>Services</li>
                 </a>
-                <a href="<?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "sahaback/login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -64,7 +64,7 @@ session_start();
                         </a>
                     </div>
                     <p>Welcome,
-                        <?php if (isset ($_SESSION["User_firstname"])) {
+                        <?php if (isset($_SESSION["User_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["User_firstname"];
                         } else {
@@ -87,11 +87,21 @@ session_start();
 
                         while ($row = $result->fetch_assoc()) {
                             $seller_id = $row['seller_id'];
+                            $booked = 'false';
+                            $todate = $row['todate'];
+                            $todateJS = date('Y-m-d', strtotime($todate));
                             echo "<div class='reserve_info'>";
                             echo "<img id='reserve_img' height='320px' width='430px' src='sahaback/" . $row['img'] . "' alt='img here'>";
                             echo "<h2> Name: " . $row['vehiclename'] . " - " . $row['model'] . "<h2>";
                             echo "<p>Price - " . $row['price'] . "</p>";
-                            echo "<button class='side-panel-toggle' type='button' id='reserve_btn'> Book Now</button>";
+                            if ($row['booked'] == true) {
+                                echo "<h3 style='color: green;'>Booked from " . $row['fromdate'] . " to " . $row['todate'] . "";
+                                echo "<button class='side-panel-toggle' type='button' id='reserve_btn'> Book Now</button>";
+                                $booked = 'true';
+                            } else {
+                                echo "<button class='side-panel-toggle' type='button' id='reserve_btn'> Book Now</button>";
+                            }
+
                             // echo "<div class='sidepanel'><h1>Fill the Information</h1>";
                             // echo "</div>";
                             echo "</div>";
@@ -104,9 +114,9 @@ session_start();
 
                     <div class='sidepanel'>
                         <h1>Fill the Information</h1>
-                        <?php if (isset ($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+                        <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             $user_available = true;
-                            if (isset ($_SESSION["User_id"])) {
+                            if (isset($_SESSION["User_id"])) {
                                 // User is logged in, so echo the id
                                 $user_id = $_SESSION["User_id"];
                             } else {
@@ -139,6 +149,7 @@ session_start();
                             <label for="">From:</label>
                             <input id="date1" type="date" name="fromdate" required><br>
 
+
                             <label for="">To:</label>
                             <input id="date2" type="date" name="todate" required><br>
 
@@ -164,44 +175,88 @@ session_start();
             </div>
         </div>
     </div>
+
     <script>
-        var btn = document.querySelector('.side-panel-toggle');
-        var side = document.querySelector('.sidepanel');
-        var main = document.querySelector('.container');
+        document.addEventListener("DOMContentLoaded", function () {
+            var btn = document.querySelector('.side-panel-toggle');
+            var side = document.querySelector('.sidepanel');
+            var main = document.querySelector('.container');
 
-        var date1 = document.getElementById('date1');
-        var date2 = document.getElementById('date2');
-        var result = document.getElementById('result');
-        var profile = document.querySelector('.profile_image');
+            var date1 = document.getElementById('date1');
+            var date2 = document.getElementById('date2');
+            var result = document.getElementById('result');
+            var profile = document.querySelector('.profile_image');
+            var todate = '<?php echo $todateJS; ?>';
+            var valid = '<?php echo $booked; ?>';
+            if (valid == 'false') {
+                const today = new Date();
+                const minDate1 = new Date(today);
+                minDate1.setDate(minDate1.getDate() + 1);
 
-        function resultchange() {
-            var fromDate = new Date(date1.value);
-            var toDate = new Date(date2.value);
-
-            var differenceInTime = toDate.getTime() - fromDate.getTime();
-            var differenceInDays = differenceInTime / (1000 * 3600 * 24);
-
-            var days = fromDate.getHours();
-
-
-        }
-
-        btn.addEventListener("click", function () {
-            side.style.display = 'block';
-            side.classList.toggle('open');
-            main.style.filter = 'blur(7px);';
-
-        })
-        date1.addEventListener("change", resultchange())
-        date2.addEventListener("change", resultchange())
+                // Set the minimum date for date1 input
 
 
-        profile.addEventListener('click', function () {
-            window.location.href = 'logout.php';
+                date1.setAttribute('min', minDate1.toISOString().split('T')[0]);
+            } else if (valid == 'true') {
+                const today = new Date();
+                const minDate1 = new Date(todate);
+                minDate1.setDate(minDate1.getDate() + 1);
+
+                // Set the minimum date for date1 input
+
+
+                date1.setAttribute('min', minDate1.toISOString().split('T')[0]);
+            }
+
+
+
+            btn.addEventListener("click", function () {
+                side.style.display = 'block';
+                side.classList.toggle('open');
+                main.style.filter = 'blur(7px);';
+            });
+
+
+
+            function resultchange() {
+                // Get today's date
+                const today = new Date();
+                // Get the selected date from date1 input
+                const selectedDate = new Date(date1.value);
+
+                // If selected date is before today's date, set it to today
+                if (selectedDate < today) {
+                    date1.valueAsDate = today;
+                }
+
+
+                // Set the minimum date for date2 input
+                // by adding 1 day to the selected date from date1 input
+                const minDate = new Date(selectedDate.getTime() + (24 * 60 * 60 * 1000));
+                const minDateString = minDate.toISOString().split('T')[0];
+                date2.setAttribute('min', minDateString);
+
+
+
+                // Clear the value of date2 input if it's less than the new minimum date
+                if (new Date(date2.value) < minDate) {
+                    date2.value = '';
+                }
+
+
+
+            }
+
+            date1.addEventListener("change", resultchange);
+            date2.addEventListener("change", resultchange);
+
+            profile.addEventListener('click', function () {
+                window.location.href = 'logout.php';
+            });
         });
-
-
     </script>
+
+
 </body>
 
 </html>

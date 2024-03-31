@@ -35,3 +35,12 @@ td img{
     margin-top: 12px;
     border: none;
 }
+#openModal{
+    background-color: #242933;
+    padding: 12px 15px;
+    margin-left: 34px;
+    margin-top: 12px;
+    color: rgba(255, 255, 255, 0.836);
+    border-radius: 12px;
+    border: none;
+}

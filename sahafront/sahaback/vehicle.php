@@ -135,7 +135,7 @@
           $conn = new mysqli($servername, $username, $password, $database);
           // Check connection
           if ($conn->connect_error) {
-            die ("Connection failed: " . $conn->connect_error);
+            die("Connection failed: " . $conn->connect_error);
           }
           ?>
 
@@ -146,18 +146,9 @@
             const modal = document.getElementById('myModal');
 
             openModalButton.addEventListener('click', () => {
-              modal.style.display = 'block';
+              window.location.href = 'vehicle_add.php';
             });
 
-            closeModalButton.addEventListener('click', () => {
-              modal.style.display = 'none';
-            });
-
-            window.addEventListener('click', (event) => {
-              if (event.target === modal) {
-                modal.style.display = 'none';
-              }
-            });
           </script>
 
 
@@ -188,7 +179,7 @@
                 $conn = new mysqli($servername, $username, $password, $database);
                 // Check connection
                 if ($conn->connect_error) {
-                  die ("Connection failed: " . $conn->connect_error);
+                  die("Connection failed: " . $conn->connect_error);
                 }
 
 
