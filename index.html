@@ -1,0 +1,38 @@
+<body>
+    <canvas id="canvas">
+        <!--an empty canvas, which we'll fill with an image dynamically using JS.-->
+    </canvas>
+</body>
+<script>
+    window.onload = function () {
+        // GET THE IMAGE.
+        let img = new Image();
+        img.src = 'chart.png';
+
+        // WAIT TILL IMAGE IS LOADED.
+        img.onload = function () {
+            fill_canvas(img);       // FILL THE CANVAS WITH THE IMAGE.
+        }
+       
+
+        function fill_canvas(img) {
+            
+            let canvas = document.getElementById('canvas');
+            let ctx = canvas.getContext('2d'); // CREATE CANVAS CONTEXT.
+            var x=1;
+            var y=1;
+
+            canvas.width = 1200;
+            canvas.height = 1200;
+
+            
+            canvas.addEventListener('click', ()=>{
+                x+=60;
+                y+=60
+                ctx.drawImage(img,x,y); 
+                console.log(x);
+                
+        })      // DRAW THE IMAGE TO THE CANVAS.
+        }
+    }
+</script>

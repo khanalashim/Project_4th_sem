@@ -27,11 +27,11 @@ session_start();
                 <a href="track_bookings.php">
                     <li id="active"><i class='bx bx-list-plus'></i>Track Bookings</li>
                 </a>
-                <a href="trending.php">
-                    <li><i class='bx bx-trending-up'></i>Trending</li>
+                <a href="booking_history.php">
+                    <li><i class='bx bx-trending-up'></i>Booking History</li>
                 </a>
                 <a href="services.php">
-                    <li><i class='bx bxs-package'></i>Services</li>
+                    <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
                 <a href="<?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     echo "profile.php";
@@ -47,6 +47,12 @@ session_start();
                     </li>
                 </a>
             </ul>
+            <div class="seller">
+                <h1><i class='bx bx-money-withdraw'></i>Become a seller</h1>
+                <a href="../seller/registration.php">
+                    <p>Regsiter<i class='bx bx-right-arrow-alt'></i></p>
+                </a>
+            </div>
         </div>
 
 

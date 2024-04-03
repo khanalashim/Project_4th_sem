@@ -29,6 +29,9 @@ $result = $conn->query($query);
 $query1 = "UPDATE vehicles SET booked='true', fromdate='$fromdate', todate='$todate', user_id='$user_id' WHERE id='$veh_id'";
 $result1 = $conn->query($query1);
 
+$query2 = "INSERT INTO booked (user_id, seller_id, veh_id, veh_name, veh_price, veh_model, veh_img,booked,fromdate,todate) VALUES ('$user_id','$seller_id','$veh_id','$vehiclename','$vehicleprice','$vehiclemodel','$veh_img','true','$fromdate','$todate')";
+$result2 = $conn->query($query2);
+
 
 
 if ($result === TRUE) {
