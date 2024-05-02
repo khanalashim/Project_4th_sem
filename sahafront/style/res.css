@@ -1,4 +1,4 @@
-.sidepanel{
+.sidepanel {
     /* display: none; */
     background-color: #ffffff;
     position: absolute;
@@ -13,21 +13,25 @@
     /* color: #ffffff; */
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
-    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     line-height: 36px;
     transform: translateX(-1240px);
     transition: transform 0.3s ease-in-out;
 }
-.sidepanel #name,#email,#phone{
+
+.sidepanel #name,
+#email,
+#phone {
     padding: 12px 16px;
     margin-left: 13px;
     border-radius: 12px;
     border: 1px solid gray;
     margin-top: 14px;
-    
+
 
 }
-.sidepanel button{
+
+.sidepanel button {
     display: block;
     text-align: center;
     background-color: #00308F;
@@ -35,24 +39,29 @@
     padding: 18px 24px;
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid ;
+    border: 1px solid;
     cursor: pointer;
     font-weight: 600;
-    
+
     transition: 0.3s;
 }
-.sidepanel button:hover{
+
+.sidepanel button:hover {
     background-color: #0843b7;
 }
-.sidepanel.open{
+
+.sidepanel.open {
     transform: translateX(-120px);
 }
-.sidepanel label{
+
+.sidepanel label {
     color: black;
     margin-left: 12px;
     word-spacing: 4px;
 }
-.sidepanel #date1,#date2{
+
+.sidepanel #date1,
+#date2 {
     width: 45%;
     margin-top: 15px;
     margin-left: 12px;
@@ -62,47 +71,56 @@
     border-radius: 12px;
     border: 1px solid gray;
 }
-.sidepanel h1,h3{
+
+.sidepanel h1,
+h3 {
     color: black;
-    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     line-height: 40px;
 }
-.vehicle_info{
+
+.vehicle_info {
     display: grid;
     grid-template-columns: 2fr 5fr;
 }
-.reserve_info{
+
+.reserve_info {
     /* background-color: green; */
     padding: 12px 34px;
-    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     line-height: 36px;
-    
+
 
 }
-.reserve_info h2{
+
+.reserve_info h2 {
     font-weight: 100;
     font-size: 22px;
 
 }
-.reserve_desp{
+
+.reserve_desp {
     /* background-color: blue; */
     display: grid;
     grid-template-columns: auto auto;
 
-    font-family: Macan,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Macan, Helvetica Neue, Helvetica, Arial, sans-serif;
     line-height: 26px;
     word-spacing: 4px;
 }
-.reserve_desp h3{
+
+.reserve_desp h3 {
     letter-spacing: 2px;
     font-size: 22px;
     font-weight: 600;
 }
-#reserve_img{
+
+#reserve_img {
     border-radius: 12%;
-    
+
 }
-#reserve_btn{
+
+#reserve_btn {
     display: block;
     text-align: center;
     background-color: #00308F;
@@ -110,12 +128,58 @@
     padding: 18px 24px;
     border-radius: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid ;
+    border: 1px solid;
     cursor: pointer;
     font-weight: 600;
 
     transition: 0.3s;
 }
-#reserve_btn:hover{
+
+#reserve_btn:hover {
     background-color: #0843b7;
+}
+
+.review_ratings {
+
+    display: grid;
+    /* grid-template-columns: auto auto auto;
+    height: 100vh; */
+    grid-template-columns: repeat(3, 1fr);
+    /* Adjust column width as needed */
+    gap: 10px;
+    /* Adjust gap between vehicles as needed */
+    background-color: white;
+    width: 98%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12px;
+}
+
+#comment {
+    color: #404145a2;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    margin-left: 19px;
+    font-size: 20px;
+    border-radius: 12px;
+    border: 2px solid #808080ad;
+    resize: none;
+    padding: 10px 12px;
+}
+
+.comment_main {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile_image_cmt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 19px;
+}
+
+.profile_image_cmt img {
+    border-radius: 16px;
 }

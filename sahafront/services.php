@@ -80,7 +80,7 @@ session_start();
 
                     </div>
                 </div>
-                <h1>Home /</h1>
+                <h1>Verification /</h1>
                 <div class="vehicle_info">
                     <div class="vehicle_container">
                         <?php

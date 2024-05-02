@@ -39,19 +39,19 @@ if ($ok === 0) {
                     <li><i class='bx bx-list-plus'></i>Vehicles</li>
                 </a>
                 <a href="verify_request.php">
-                    <li><i class='bx bxs-package'></i>Verify Users</li>
+                    <li><i class='bx bx-star'></i>Verify Users</li>
                 </a>
                 <a href="bookings.php">
-                    <li><i class='bx bxs-package'></i>Bookings</li>
+                    <li><i class='bx bx-cart-add'></i>Bookings</li>
                 </a>
                 <a href="booked_vehicles.php">
-                    <li><i class='bx bxs-package'></i>Booked</li>
+                    <li><i class='bx bx-store-alt'></i>Booked</li>
                 </a>
                 <a href="sellers.php">
-                    <li><i class='bx bxs-package'></i>Sellers</li>
+                    <li><i class='bx bxs-badge-dollar'></i>Sellers</li>
                 </a>
                 <a href="verify_seller.php">
-                    <li id="active"><i class='bx bxs-package'></i>Verify Seller</li>
+                    <li id="active"><i class='bx bx-star'></i>Verify Seller</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -84,7 +84,7 @@ if ($ok === 0) {
                     </div>
                 </div>
 
-                <h1>Dashboard /</h1>
+                <h1>Verify Sellers /</h1>
                 <div class="vehicle_info">
                     <div class='vehicle_container'>
                         <table class="table">

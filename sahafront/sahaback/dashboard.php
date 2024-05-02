@@ -52,19 +52,19 @@ if ($conn->connect_error) {
                     <li><i class='bx bx-list-plus'></i>Vehicles</li>
                 </a>
                 <a href="verify_request.php">
-                    <li><i class='bx bxs-package'></i>Verify Users</li>
+                    <li><i class='bx bx-star'></i>Verify Users</li>
                 </a>
                 <a href="bookings.php">
-                    <li><i class='bx bxs-package'></i>Bookings</li>
+                    <li><i class='bx bx-cart-add'></i>Bookings</li>
                 </a>
                 <a href="booked_vehicles.php">
-                    <li><i class='bx bxs-package'></i>Booked</li>
+                    <li><i class='bx bx-store-alt'></i>Booked</li>
                 </a>
                 <a href="sellers.php">
-                    <li><i class='bx bxs-package'></i>Sellers</li>
+                    <li><i class='bx bxs-badge-dollar'></i>Sellers</li>
                 </a>
                 <a href="verify_seller.php">
-                    <li><i class='bx bxs-package'></i>Verify Seller</li>
+                    <li><i class='bx bx-star'></i>Verify Seller</li>
                 </a>
             </ul>
             <!-- <div class="seller">
@@ -151,7 +151,7 @@ if ($conn->connect_error) {
                     echo "<div class='total_vehicles'><h1><i class='bx bxs-car'></i>Total Vehicles</h1><h2>" . $count_v . "</h2></div>";
                     echo "</div>";
                     // }
-                    // }                                                                                                                                                                                                                                      ?>
+                    // }                                                                                                                                                                                                                                             ?>
 
                 </div>
             </div>

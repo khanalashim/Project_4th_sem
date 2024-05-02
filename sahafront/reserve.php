@@ -178,6 +178,18 @@ session_start();
                     </div>
 
                 </div>
+                <div class="review_ratings">
+                    <div class="main_reviews">
+                        <h1>Reviews and Ratings</h1>
+                        <div class="comment_main">
+                            <div class="profile_image_cmt">
+                                <img height="50px" width="50px" src="profile.jpg" alt="">
+                            </div>
+                            <textarea name="" id="comment" cols="60" rows="4"></textarea>
+                        </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>

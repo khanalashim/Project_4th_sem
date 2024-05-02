@@ -88,7 +88,7 @@ session_start();
                     </div>
                 </div>
 
-                <h1>Home /</h1>
+                <h1>Booking History /</h1>
                 <div class="vehicle_info">
                     <table class='table'>
                         <thead class='table-light'>

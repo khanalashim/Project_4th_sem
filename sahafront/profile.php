@@ -107,7 +107,7 @@ if ($conn->connect_error) {
                     </div>
                 </div>
 
-                <h1>Home /</h1>
+                <h1>Profile /</h1>
                 <div class="vehicle_info">
                     <?php
                     $user = $_SESSION['User_id'];
