@@ -195,10 +195,10 @@ session_start();
                             </div>
                             <div id="rating_counter">
                                 <?php $sql_count = "SELECT rating_counts FROM vehicles WHERE id='$veh_id'";
-                                $result = $conn->query($sql_count);
-                                if ($result->num_rows > 0) {
-                                    $row = $result->fetch_assoc();
-                                    echo "(" . $row["rating_counts"] . ")";
+                                $result3 = $conn->query($sql_count);
+                                if ($result3->num_rows > 0) {
+                                    $row3 = $result3->fetch_assoc();
+                                    echo "(" . $row3["rating_counts"] . ")";
                                 } else {
                                     echo "(0)";
                                 } ?>
@@ -214,9 +214,21 @@ session_start();
                         </div>
 
                     </div>
-                    <div class="reviews">
-                        <h1>herp</h1>
-                    </div>
+                    <?php
+                    $sql_comt = "SELECT * FROM comment WHERE veh_id='$veh_id'";
+                    $result2 = $conn->query($sql_comt);
+                    if ($result2->num_rows > 0) {
+                        while ($row2 = $result2->fetch_assoc()) {
+                            $s = $_SESSION['User_firstname'];
+                            echo "<div class='comment_main'>";
+                            echo "<div class='profile_image_cmt'><img height='50px' width='50px' src='profile.jpg'></div>";
+                            echo "<div id='rev_comt'><div id='comment'>";
+                            echo "<span>" . $s . "</span><p>⭐" . $row2['rating'] . "" . $row2['comment'] . "</div></div>";
+                            echo "</div>";
+                        }
+
+                    }
+                    ?>
                 </div>
             </div>
         </div>
