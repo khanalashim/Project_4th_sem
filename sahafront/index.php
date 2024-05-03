@@ -111,6 +111,9 @@ if ($conn->connect_error) {
                     <?php
                     $query = "SELECT * FROM vehicles";
                     $result = $conn->query($query);
+                    $ratings = 0;
+                    $count = 0;
+                    $avgrat = 0;
 
                     if ($result->num_rows > 0) {
 
@@ -119,7 +122,24 @@ if ($conn->connect_error) {
                             echo "<div class='vehicle_container'>";
                             echo "<img height='200px' width='160px' src='sahaback/" . $row['img'] . "' alt=''>";
                             echo "<p>" . $row['vehiclename'] . "- " . $row['model'] . "</p>";
-                            echo "<p id='para_bold'><i class='bx bxs-star'></i>Rating 5</p>";
+                            echo "<p id='para_bold'>";
+                            $sql_check = "SELECT * FROM comment WHERE veh_id='$veh_id'";
+                            $result_check = $conn->query($sql_check);
+                            if ($result_check->num_rows > 0) {
+                                while ($row4 = $result_check->fetch_assoc()) {
+                                    $ratings = $ratings + $row4['rating'];
+                                    $totalchecksql = "SELECT * FROM comment";
+                                    $totalresult_check = $conn->query($totalchecksql);
+                                    if ($totalresult_check->num_rows > 0) {
+                                        while ($row5 = $totalresult_check->fetch_assoc()) {
+                                            $count = $count + 1;
+                                        }
+                                    }
+                                    $avgrat = $ratings / $count;
+
+                                }
+                            }
+                            echo "</i>Rating ⭐ " . $avgrat . "</p>";
                             echo "<p id='para_bold'>" . $row['price'] . "</p>";
                             echo "<a href='reserve.php?vehicle=$veh_id'><button id='reserve_btn'> More Details</button></a>";
                             echo "</div>";

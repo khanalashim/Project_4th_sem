@@ -223,7 +223,7 @@ session_start();
                             echo "<div class='comment_main'>";
                             echo "<div class='profile_image_cmt'><img height='50px' width='50px' src='profile.jpg'></div>";
                             echo "<div id='rev_comt'><div id='comment'>";
-                            echo "<span>" . $s . "</span><p>⭐" . $row2['rating'] . "" . $row2['comment'] . "</div></div>";
+                            echo "<span>" . $s . "</span><p>⭐" . $row2['rating'] . " " . $row2['comment'] . "</div></div>";
                             echo "</div>";
                         }
 
