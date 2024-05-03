@@ -11,6 +11,10 @@ session_start();
     <title>Document</title>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="style/res.css">
 
@@ -181,13 +185,37 @@ session_start();
                 <div class="review_ratings">
                     <div class="main_reviews">
                         <h1>Reviews and Ratings</h1>
+                        <div class="rating-wrapper" data-id="raiders">
+                            <div class="star-wrapper">
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                            </div>
+                            <div id="rating_counter">
+                                <?php $sql_count = "SELECT rating_counts FROM vehicles WHERE id='$veh_id'";
+                                $result = $conn->query($sql_count);
+                                if ($result->num_rows > 0) {
+                                    $row = $result->fetch_assoc();
+                                    echo "(" . $row["rating_counts"] . ")";
+                                } else {
+                                    echo "(0)";
+                                } ?>
+                            </div>
+                        </div>
                         <div class="comment_main">
                             <div class="profile_image_cmt">
                                 <img height="50px" width="50px" src="profile.jpg" alt="">
                             </div>
-                            <textarea name="" id="comment" cols="60" rows="4"></textarea>
+                            <textarea name="" id="comment" cols="60" rows="4"
+                                placeholder="Write a comment for this product..."></textarea>
+                            <button class='side-panel-toggle' type='button' id='reserve_btn_ratings'> Publish</button>
                         </div>
 
+                    </div>
+                    <div class="reviews">
+                        <h1>herp</h1>
                     </div>
                 </div>
             </div>
@@ -272,9 +300,14 @@ session_start();
                 window.location.href = 'logout.php';
             });
         });
+
+        var sellerid = <?php echo json_encode($seller_id); ?>;
+        var vehid = <?php echo json_encode($veh_id); ?>;
+
     </script>
 
 
+    <script src="res.js"></script>
 </body>
 
 </html>
