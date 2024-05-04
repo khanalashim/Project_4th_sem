@@ -219,11 +219,19 @@ session_start();
                     $result2 = $conn->query($sql_comt);
                     if ($result2->num_rows > 0) {
                         while ($row2 = $result2->fetch_assoc()) {
-                            $s = $_SESSION['User_firstname'];
+                            $s = $row2['user_id'];
+                            $namesql = "SELECT * FROM users WHERE id='$s'";
+                            $resultname = $conn->query($namesql);
+                            if ($resultname->num_rows > 0) {
+                                while ($rows = $resultname->fetch_assoc()) {
+                                    $firstn = $rows['firstname'];
+                                    $lastn = $rows['lastname'];
+                                }
+                            }
                             echo "<div class='comment_main'>";
                             echo "<div class='profile_image_cmt'><img height='50px' width='50px' src='profile.jpg'></div>";
                             echo "<div id='rev_comt'><div id='comment'>";
-                            echo "<span>" . $s . "</span><p>⭐" . $row2['rating'] . " " . $row2['comment'] . "</div></div>";
+                            echo "<span>" . $firstn . " " . $lastn . "</span><p>⭐" . $row2['rating'] . " " . $row2['comment'] . "</div></div>";
                             echo "</div>";
                         }
 

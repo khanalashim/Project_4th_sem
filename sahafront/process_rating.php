@@ -9,7 +9,7 @@ $seller_id = $_POST['sellerid'];
 $veh_id = $_POST['vehid'];
 
 // Check if a rating for the same vehicle ID already exists in the comment table
-$sql_check = "SELECT * FROM comment WHERE veh_id='$veh_id'";
+$sql_check = "SELECT * FROM comment WHERE veh_id='$veh_id' AND user_id='$user_id'";
 $result_check = $conn->query($sql_check);
 
 if ($result_check->num_rows > 0) {

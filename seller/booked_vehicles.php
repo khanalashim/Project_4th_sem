@@ -12,7 +12,7 @@ $database = "mydb";
 $conn = new mysqli($servername, $username, $password, $database);
 // Check connection
 if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 
 ?>
@@ -57,13 +57,13 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                             $user_available = true;
                         } else {
@@ -98,7 +98,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset ($_SESSION["Seller_firstname"])) {
+                        <?php if (isset($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
@@ -130,7 +130,7 @@ if ($conn->connect_error) {
                         <tbody>
                             <?php
                             $user_id = 0;
-                            if (isset ($_SESSION["Seller_id"])) {
+                            if (isset($_SESSION["Seller_id"])) {
                                 $seller_id = $_SESSION["Seller_id"];
                             } else {
                                 echo "Login/Register First";
@@ -154,7 +154,7 @@ if ($conn->connect_error) {
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
                                         if ($user_available == true) {
-                                            echo "<td id='action'><a href='message.php'><button>Message</button></a>";
+                                            // echo "<td id='action'><a href='message.php'><button>Message</button></a>";
                                             echo "<td id='action'><a href='accept.php'><button>Accept</button></a>";
                                         } else {
                                             echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
