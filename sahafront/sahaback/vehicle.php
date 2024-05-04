@@ -126,17 +126,7 @@
             </div>
           </div> -->
           <?php
-          $servername = "localhost";
-          $username = "root";
-          $password = "";
-          $database = "mydb";
-
-          // Create connection
-          $conn = new mysqli($servername, $username, $password, $database);
-          // Check connection
-          if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-          }
+          include "../db.php";
           ?>
 
           <script>
@@ -170,18 +160,6 @@
               </thead>
               <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "mydb";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $database);
-                // Check connection
-                if ($conn->connect_error) {
-                  die("Connection failed: " . $conn->connect_error);
-                }
-
 
                 $query = "SELECT * FROM vehicles";
                 $result = $conn->query($query);

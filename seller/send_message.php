@@ -3,20 +3,10 @@
 // Assuming you have a database connection
 // Assuming you have a table called 'messages' with columns 'id' and 'message'
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "mydb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-// Check connection
-if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
-}
+include "../sahafront/db.php";
 
 // Code to handle sending message
-if (isset ($_POST['message']) && !empty ($_POST['message'])) {
+if (isset($_POST['message']) && !empty($_POST['message'])) {
     // Retrieve the message from the POST request
     $message = $_POST['message'];
 

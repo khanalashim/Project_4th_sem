@@ -1,26 +1,16 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "mydb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-// Check connection
-if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
-}
+include "../sahafront/db.php";
 session_start();
 
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if (isset ($_SESSION["User_id"])) {
+    if (isset($_SESSION["User_id"])) {
         $user_id = $_SESSION["User_id"];
     } else {
         $user_id = 0;
     }
 
-    if (isset ($_SESSION["Seller_id"])) {
+    if (isset($_SESSION["Seller_id"])) {
         $seller_id = $_SESSION["Seller_id"];
     } else {
         $seller_id = 0;
@@ -49,28 +39,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query1 = "UPDATE vehicles SET ";
 
     // Check if each field is provided and update it accordingly
-    if (!empty ($veh_name)) {
+    if (!empty($veh_name)) {
         $query1 .= "vehiclename = '$veh_name', ";
     }
-    if (!empty ($veh_model)) {
+    if (!empty($veh_model)) {
         $query1 .= "model = '$veh_model', ";
     }
-    if (!empty ($veh_color)) {
+    if (!empty($veh_color)) {
         $query1 .= "color = '$veh_color', ";
     }
-    if (!empty ($veh_mileage)) {
+    if (!empty($veh_mileage)) {
         $query1 .= "mileage = '$veh_mileage', ";
     }
-    if (!empty ($veh_price)) {
+    if (!empty($veh_price)) {
         $query1 .= "price = '$veh_price', ";
     }
-    if (!empty ($veh_km)) {
+    if (!empty($veh_km)) {
         $query1 .= "km = '$veh_km', ";
     }
-    if (!empty ($veh_reg)) {
+    if (!empty($veh_reg)) {
         $query1 .= "registration = '$veh_reg', ";
     }
-    if (!empty ($txt)) {
+    if (!empty($txt)) {
         $query1 .= "description = '$txt', ";
     }
 

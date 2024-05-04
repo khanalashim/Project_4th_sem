@@ -3,17 +3,7 @@ session_start();
 // $_SESSION = array();
 // session_destroy();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "mydb";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $database);
-// Check connection
-if ($conn->connect_error) {
-    die ("Connection failed: " . $conn->connect_error);
-}
+include "../sahafront/db.php";
 
 ?>
 
@@ -57,14 +47,14 @@ if ($conn->connect_error) {
                 <a href="verification.php">
                     <li><i class='bx bxs-package'></i>Verification</li>
                 </a>
-                <a href="<?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                <a href="<?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                     echo "profile.php";
                 } else {
                     echo "login.php";
                     header('location: login.php');
                 } ?>">
                     <li><i class='bx bx-log-in'></i>
-                        <?php if (isset ($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
+                        <?php if (isset($_SESSION["Seller_loggedin"]) && $_SESSION["Seller_loggedin"] === true) {
                             echo "Profile";
                         } else {
                             echo "Login";
@@ -97,7 +87,7 @@ if ($conn->connect_error) {
 
 
                     <p>Welcome,
-                        <?php if (isset ($_SESSION["Seller_firstname"])) {
+                        <?php if (isset($_SESSION["Seller_firstname"])) {
                             // User is logged in, so echo the first name
                             echo $_SESSION["Seller_firstname"];
                         } else {
