@@ -354,123 +354,80 @@ CREATE TABLE `verification` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Indexes for dumped tables
---
 
---
--- Indexes for table `booked`
---
 ALTER TABLE `booked`
   ADD PRIMARY KEY (`book_id`);
 
---
--- Indexes for table `bookings`
---
 ALTER TABLE `bookings`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `comment`
---
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `messages`
---
 ALTER TABLE `messages`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `seller`
---
 ALTER TABLE `seller`
   ADD PRIMARY KEY (`s_id`),
   ADD UNIQUE KEY `email` (`email`);
 
---
--- Indexes for table `seller_verification`
---
 ALTER TABLE `seller_verification`
   ADD PRIMARY KEY (`seller_v_id`);
 
---
--- Indexes for table `users`
---
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `vehicles`
---
 ALTER TABLE `vehicles`
   ADD PRIMARY KEY (`id`);
 
---
--- Indexes for table `verification`
---
 ALTER TABLE `verification`
   ADD PRIMARY KEY (`v_id`);
 
---
+-- 
 -- AUTO_INCREMENT for dumped tables
---
+-- 
 
---
--- AUTO_INCREMENT for table `booked`
---
 ALTER TABLE `booked`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
 
---
--- AUTO_INCREMENT for table `bookings`
---
 ALTER TABLE `bookings`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
---
--- AUTO_INCREMENT for table `comment`
---
 ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
---
--- AUTO_INCREMENT for table `messages`
---
 ALTER TABLE `messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
---
--- AUTO_INCREMENT for table `seller`
---
 ALTER TABLE `seller`
   MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT for table `seller_verification`
---
 ALTER TABLE `seller_verification`
   MODIFY `seller_v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
---
--- AUTO_INCREMENT for table `users`
---
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
---
--- AUTO_INCREMENT for table `vehicles`
---
 ALTER TABLE `vehicles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
---
--- AUTO_INCREMENT for table `verification`
---
 ALTER TABLE `verification`
   MODIFY `v_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+-- 
+-- Foreign key constraints
+-- 
+
+ALTER TABLE `bookings`
+ADD CONSTRAINT `fk_bookings_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+ADD CONSTRAINT `fk_bookings_vehicle` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`id`);
+
+ALTER TABLE `comment`
+ADD CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`),
+ADD CONSTRAINT `fk_comment_vehicle` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles`(`id`);
+
+ALTER TABLE `seller_verification`
+ADD CONSTRAINT `fk_seller_verification_seller` FOREIGN KEY (`seller_id`) REFERENCES `seller`(`s_id`);
+
+ALTER TABLE `verification`
+ADD CONSTRAINT `fk_verification_user` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);

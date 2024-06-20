@@ -38,6 +38,7 @@ $(document).ready(function () {
                 console.error(xhr.responseText);
             }
         });
+        window.location.href = "reserve.php?vehicle="+ vehid;
     }
 
 });

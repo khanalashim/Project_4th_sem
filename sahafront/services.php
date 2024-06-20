@@ -40,8 +40,11 @@ session_start();
                     <li><i class='bx bx-log-in'></i>
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             echo "Profile";
+                            $user_available = true;
                         } else {
                             echo "Login";
+                            $user_available = false;
+
                         } ?>
                     </li>
                 </a>
@@ -114,19 +117,34 @@ session_start();
                             <img height="140px" width="160px" src="success.gif" alt="success" srcset="">
                             <h2 style="background-color: ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; letter-spacing: 2px; width: 380px; font-style: italic;"
                                 id="pending">You Are Successfully Verified</h2>
-                        <?php } else { ?>
-                            <form action="verify.php?user_id=<?php if (isset($_SESSION['User_id'])) {
-                                echo $_SESSION['User_id'];
-                            } ?>" method="post" enctype="multipart/form-data">
-                                <label id="head" for="">Verification</label><br>
-                                <label for="">Front face Nationality ID</label>
-                                <input name="front_img" type="file" accept="image/*" required>
+                        <?php } else {
+                            if ($user_available == false) {
+                                ?>
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <label id="head" for="">Verification</label><br>
+                                    <label for="">Front face Nationality ID</label>
+                                    <input name="front_img" type="file" accept="image/*" required>
 
-                                <label for="">Back face Nationality ID</label>
-                                <input name="back_img" type="file" accept="image/*" required>
-                                <button id="verify" type="submit">Verify</button>
-                            </form>
-                        <?php } ?>
+                                    <label for="">Back face Nationality ID</label>
+                                    <input name="back_img" type="file" accept="image/*" required>
+                                    <button id="verify" type="submit">Verify</button>
+                                </form>
+                                <?php
+                            } elseif ($user_available == true) { ?>
+                                <form action="verify.php?user_id=<?php if (isset($_SESSION['User_id'])) {
+                                    echo $_SESSION['User_id'];
+                                }
+                                ?>" method="post" enctype="multipart/form-data">
+                                    <label id="head" for="">Verification</label><br>
+                                    <label for="">Front face Nationality ID</label>
+                                    <input name="front_img" type="file" accept="image/*" required>
+
+                                    <label for="">Back face Nationality ID</label>
+                                    <input name="back_img" type="file" accept="image/*" required>
+                                    <button id="verify" type="submit">Verify</button>
+                                </form>
+                            <?php }
+                        } ?>
                     </div>
                 </div>
             </div>

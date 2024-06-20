@@ -1,11 +1,6 @@
 <?php
 session_start();
 $ok = $_SESSION['Admin_id'];
-if ($ok === 0) {
-    echo "";
-} else {
-    header('location: login.php');
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">

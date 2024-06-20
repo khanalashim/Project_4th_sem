@@ -128,7 +128,7 @@
                                         $id = $row['id'];
                                         if ($row['status'] == 'f') {
                                             continue;
-                                        } else {
+                                        } elseif ($row['status'] == 'p') {
                                             echo "<tr>";
                                             echo "<td>" . $row['id'] . "</td>";
                                             echo "<td> <img height='89px' width='120px' src='" . $row['vehicleimg'] . "'></td>";
@@ -138,7 +138,8 @@
                                             echo "<td>" . $row['name'] . "</td>";
                                             echo "<td>" . $row['seller_id'] . "</td>";
                                             echo "<td id='action'><a href='../booking_delete.php?delete_id=$id'><button>Delete</button></a>";
-                                            echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a></td>";
+                                            echo "<a href='booking_edit.php?edit_id=$id'><button> Edit</button></a>";
+                                            echo "<a href='accept_back.php?id=$id'><button>Accept</button></a></td>";
                                             echo "</tr>";
                                         }
 

@@ -132,9 +132,10 @@ include "../sahafront/db.php";
 
                                 while ($row = $result->fetch_assoc()) {
                                     $id = $row['id'];
+                                    $u_id = $row['user_id'];
                                     if ($row['status'] == 'f') {
                                         continue;
-                                    } else {
+                                    } elseif ($row['status'] == 'p') {
                                         echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td> <img height='89px' width='120px' src='../sahafront/sahaback/" . $row['vehicleimg'] . "'></td>";
@@ -144,8 +145,9 @@ include "../sahafront/db.php";
                                         echo "<td>" . $row['name'] . "</td>";
                                         echo "<td>" . $row['email'] . "</td>";
                                         if ($user_available == true) {
+
                                             // echo "<td id='action'><a href='message.php'><button>Message</button></a>";
-                                            echo "<td id='action'><a href='accept.php'><button>Accept</button></a>";
+                                            echo "<td id='action'><a href='accept.php?id=$id'><button>Accept</button></a>";
                                         } else {
                                             echo "<td id='action'><a href='sahaback/login.php'><button>Delete</button></a>";
                                             echo "<a href='sahaback/login.php'><button> Edit</button></a></td>";

@@ -26,14 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "Error: " . $query1 . "<br>" . $conn->error;
     }
     echo 'File uploaded Successfully';
+    header('location: vehicle.php');
 
 
 
 }
 $conn->close();
-if ($_SESSION['User_id'] == 0) {
-    header('location: vehicle.php');
-} elseif ($_SESSION['User_id'] != 0) {
-    header('location: ../add_vehicle.php');
-}
+// if ($_SESSION['User_id'] == 0) {
+//     header('location: vehicle.php');
+// } elseif ($_SESSION['User_id'] != 0) {
+//     header('location: ../add_vehicle.php');
+// }
 ?>

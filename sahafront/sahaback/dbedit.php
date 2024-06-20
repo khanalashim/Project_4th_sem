@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $query2 = "UPDATE users SET firstname='$firstname', lastname='$lastname',email='$email' WHERE id='$id'";
     $result1 = $conn->query($query2);
 }
-include "index.php";
+header('location: users.php');
 
 $conn->close();
 ?>

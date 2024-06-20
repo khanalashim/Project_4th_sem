@@ -16,6 +16,6 @@ $query = "DELETE FROM users Where id=$id";
 $result = $conn->query($query);
 
 
-include "index.php";
+header('location: users.php');
 
 ?>
